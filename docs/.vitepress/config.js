@@ -3,6 +3,7 @@ export default {
   title: 'VitePress',
   description: 'Just playing around.',
   base: './',
+  cleanUrls: true,
   themeConfig: {
     sidebar: [
       { text: 'Home', link: '/' },

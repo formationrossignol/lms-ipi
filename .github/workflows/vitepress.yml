@@ -32,3 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: .vitepress/dist/
           server-dir: /www/vitepress/
+          log-level: verbose

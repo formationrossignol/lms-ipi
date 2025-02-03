@@ -10,4 +10,4 @@ export default defineConfig({
       { text: 'Presentation', link: '/presentation' }
     ]
   }
-}
+})

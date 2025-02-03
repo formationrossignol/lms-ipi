@@ -31,6 +31,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: .vitepress/dist/
+          local-dir: docs/.vitepress/dist/
           server-dir: /www/vitepress/
           log-level: verbose

@@ -1,8 +1,7 @@
-import { defineConfig } from 'vitepress'
-
-export default defineConfig({
-  title: 'Mon Site VitePress',
-  description: 'Documentation avec VitePress',  
+export default {
+  // site-level options
+  title: 'VitePress',
+  description: 'Just playing around.',
   base: './',
   themeConfig: {
     sidebar: [
@@ -10,4 +9,4 @@ export default defineConfig({
       { text: 'Presentation', link: '/presentation' }
     ]
   }
-})
+}

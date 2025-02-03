@@ -2,10 +2,10 @@ export default {
   // site-level options
   title: 'VitePress',
   description: 'Just playing around.',
-  base: './',
+  base: '/vitepress/',
   themeConfig: {
     sidebar: [
-      { text: 'Home', link: '/index' },
+      { text: 'Home', link: '/' },
       { text: 'Presentation', link: '/presentation' }
     ]
   }

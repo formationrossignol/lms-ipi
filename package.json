@@ -1,0 +1,14 @@
+{
+  "name": "vitepress-revealjs-markdown",
+  "version": "1.0.0",
+  "description": "Projet VitePress avec intégration de Reveal.js et Markdown",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "dependencies": {
+    "vitepress": "latest",
+    "reveal.js": "latest"
+  }
+}

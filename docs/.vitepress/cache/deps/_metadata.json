@@ -1,0 +1,46 @@
+{
+  "hash": "1ef15834",
+  "configHash": "6880770d",
+  "lockfileHash": "56ccdedb",
+  "browserHash": "5164b882",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "9befbc3c",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "4ba87a1b",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "2bd569d9",
+      "needsInterop": false
+    },
+    "reveal.js": {
+      "src": "../../../../node_modules/reveal.js/dist/reveal.esm.js",
+      "file": "reveal__js.js",
+      "fileHash": "0dd50655",
+      "needsInterop": false
+    },
+    "reveal.js/plugin/markdown/markdown.esm.js": {
+      "src": "../../../../node_modules/reveal.js/plugin/markdown/markdown.esm.js",
+      "file": "reveal__js_plugin_markdown_markdown__esm__js.js",
+      "fileHash": "7b01003f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-LW4I4DCF": {
+      "file": "chunk-LW4I4DCF.js"
+    },
+    "chunk-V6TY7KAL": {
+      "file": "chunk-V6TY7KAL.js"
+    }
+  }
+}

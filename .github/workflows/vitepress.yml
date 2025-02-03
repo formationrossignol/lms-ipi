@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prod-ovh
 
     steps:
       - name: 📥 Cloner le dépôt

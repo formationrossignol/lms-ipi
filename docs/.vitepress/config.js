@@ -5,7 +5,7 @@ export default {
   base: './',
   themeConfig: {
     sidebar: [
-      { text: 'Home', link: '/' },
+      { text: 'Home', link: '/index' },
       { text: 'Presentation', link: '/presentation' }
     ]
   }

@@ -11,21 +11,21 @@ jobs:
     environment: prod-ovh
 
     steps:
-      - name: 📥 Cloner le dépôt
+      - name: Cloner le dépôt
         uses: actions/checkout@v4
 
-      - name: 🔧 Installer Node.js
+      - name: Installer Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📦 Installer les dépendances
+      - name: Installer les dépendances
         run: npm install
 
-      - name: 🔨 Générer le site statique
-        run: npm run docs:build  # ou vitepress build
+      - name: Générer le site statique
+        run: npm run docs:build
 
-      - name: 📤 Déployer via FTP
+      - name: Déployer via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
         with:
           server: ${{ secrets.FTP_SERVER }}

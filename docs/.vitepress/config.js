@@ -2,7 +2,7 @@ export default {
   // site-level options
   title: 'VitePress',
   description: 'Just playing around.',
-  base: './',
+  base: '/',
   cleanUrls: true,
   themeConfig: {
     sidebar: [

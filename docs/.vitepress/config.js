@@ -70,10 +70,11 @@ export default {
       'script',
       {},
       `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-7JLS1DFF18', { anonymize_ip: true });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-7JLS1DFF18');
       `
     ]
   ]

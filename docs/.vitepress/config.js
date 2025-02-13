@@ -64,6 +64,17 @@ export default {
     ['meta', { name: 'keywords', content: 'vitepress, documentation, guide' }],
     ['meta', { name: 'author', content: 'Votre Nom' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: '/custom.css' }] // Ajout du fichier CSS
+    ['link', { rel: 'stylesheet', href: '/custom.css' }],
+        ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-7JLS1DFF18' }],
+    [
+      'script',
+      {},
+      `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7JLS1DFF18', { anonymize_ip: true });
+      `
+    ]
   ]
 }

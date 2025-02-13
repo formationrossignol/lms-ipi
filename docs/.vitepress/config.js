@@ -63,6 +63,7 @@ export default {
   head: [
     ['meta', { name: 'keywords', content: 'vitepress, documentation, guide' }],
     ['meta', { name: 'author', content: 'Votre Nom' }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'stylesheet', href: '/custom.css' }] // Ajout du fichier CSS
   ]
 }

@@ -1,92 +1,23 @@
-:root {
-  --vp-c-brand: #ff5e00; /* Couleur principale (Orange vif) */
-  --vp-c-brand-light: #ff784e;
-  --vp-c-brand-dark: #e64a00;
-  --vp-c-bg: #f5f5f5; /* Fond clair */
-  --vp-c-bg-soft: #ffffff;
-  --vp-c-bg-alt: #e6e6e6;
-  --vp-c-text-1: #333333;
-  --vp-c-text-2: #555555;
-  --vp-c-text-light: #ffffff;
+/* Styles personnalisés pour les présentations */
+.presentation-mode {
+  .VPNav,
+  .VPSidebar,
+  .VPFooter {
+    display: none !important;
+  }
 }
 
-/* Design global */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-
-/* Header */
-.VPNavBar {
-  background: var(--vp-c-brand);
+.slide-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #3eaf7c;
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  border-radius: 6px;
+  margin: 10px;
+  transition: background 0.3s;
 }
 
-/* Liens du menu */
-.VPNavBar a {
-  color: white;
-  font-weight: bold;
-}
-
-.VPNavBar a:hover {
-  color: var(--vp-c-brand-light);
-}
-
-/* Sidebar */
-.VPSidebar {
-  background: var(--vp-c-bg-alt);
-  padding: 20px;
-  border-radius: 12px;
-}
-
-/* Liens de la sidebar */
-.VPSidebar a {
-  color: var(--vp-c-text-1);
-}
-
-.VPSidebar a:hover {
-  color: var(--vp-c-brand-dark);
-  font-weight: bold;
-}
-
-/* Contenu */
-.VPContent {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Pied de page */
-.VPFooter {
-  background: var(--vp-c-brand-dark);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-
-/* Boutons */
-button {
-  background: var(--vp-c-brand);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: var(--vp-c-brand-dark);
-}
-
-/* Mode sombre */
-.dark {
-  --vp-c-bg: #1e1e1e;
-  --vp-c-text-1: #ffffff;
-  --vp-c-text-2: #bbbbbb;
-  --vp-c-bg-soft: #252525;
-  --vp-c-bg-alt: #333333;
+.slide-link:hover {
+  background: #369870;
 }

@@ -3,8 +3,8 @@ import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Cours",
-  description: "Cette documentation est réalisée par Valentin Brosseau (pour le BTS SIO, GRETA, et dans différentes interventions), vous retrouverez dans l’ensemble des cours (slide) ainsi que les TP.",
+  title: "Formation DevOps",
+  description: "Plateforme de formation DevOps",
   srcExclude: ['public/**/*.md'],
   ignoreDeadLinks: [
     /^https?:\/\/localhost:*/,
@@ -24,7 +24,7 @@ export default defineConfig({
     ['script', { src: '/webllm/main.js', type: 'module' }],
     [
       'script',
-      { src: 'https://www.googletagmanager.com/gtag/js?id=G-8EFZPGCSXK' },
+      { src: '' },
     ],
     [
       'script',
@@ -41,7 +41,6 @@ export default defineConfig({
   },
   lastUpdated: true,
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     search: {
       provider: 'local'
     },
@@ -51,8 +50,7 @@ export default defineConfig({
     },
 
     nav: [
-      { text: 'Accueil', link: '/' },
-      { text: 'Une question ?', link: '/pages/contact.md' },
+      { text: 'Accueil', link: '/' }
     ],
 
     lastUpdatedText: 'Mis à jour le',
@@ -70,8 +68,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/c4software/bts-sio' },
-      { icon: 'twitter', link: 'https://twitter.com/c4software' }
+      { icon: 'github', link: 'https://github.com/formationrossignol/lms-ipi/tree/main' },
     ]
   }
 })

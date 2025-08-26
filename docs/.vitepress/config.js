@@ -10,6 +10,7 @@ export default {
     nav: [
       { text: 'Accueil', link: '/' },
       { text: 'Présentation', link: '/presentation' },
+      { text: 'CICD', link: '/cicd' },
       { text: 'Guide', link: '/guide/' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Contact', link: '/contact' }
@@ -20,6 +21,7 @@ export default {
       '/': [
         { text: 'Accueil', link: '/' },
         { text: 'Présentation', link: '/presentation' },
+        { text: 'CICD', link: '/cicd' },
         { text: 'Guide', link: '/guide/' },
         { text: 'FAQ', link: '/faq/' }
       ],

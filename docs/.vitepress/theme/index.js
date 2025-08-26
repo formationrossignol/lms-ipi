@@ -1,9 +1,10 @@
 import DefaultTheme from 'vitepress/theme'
-import './custom.css' // Assure-toi que ce fichier existe
+import RevealSlides from '../components/RevealSlides.vue'
+import './custom.css'
 
 export default {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   enhanceApp({ app }) {
-    // Ajoute ici des composants globaux si nécessaire
+    app.component('RevealSlides', RevealSlides)
   }
 }

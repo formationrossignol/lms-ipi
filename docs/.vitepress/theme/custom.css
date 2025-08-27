@@ -21,3 +21,18 @@
 .slide-link:hover {
   background: #369870;
 }
+
+@media print {
+    .VPContent{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    header.VPNav, .VPDoc .aside, aside {
+        display: none !important
+    }
+
+    .content-container{
+        max-width: 100% !important;
+    }
+}

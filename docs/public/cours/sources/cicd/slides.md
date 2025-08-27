@@ -2,37 +2,11 @@
 
 ---
 
-## Présentation du formateur
-
-- Loïc Rossignol  
-  - Plus de 12 ans d’expérience en IT
-- Responsable ingénierie projet et Manager d’équipe
-- Formateur :
-  - IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum  
-  - Thales : DevOps, Lean/Agilité et Air Traffic Management
-- Centres d'intérêt :
-  - Badminton
-  - Plongée
-
-https://www.linkedin.com/in/loicrossignol/
-
----
-
 ## Disclaimer
 
 * Première version de la formation
 * Il n’est pas possible de voir tous les concepts de CI/CD, déploiement, toutes les conﬁgurations des outils etc. pour la durée du module
 * Cette formation se concentre sur Gitlab et Jenkins mais il existe une multitude d’outils
-
----
-
-## Tour de table
-
-- Prénom / Nom
-- Mon expérience avec la pratique de CI/CD
-- Mes attentes vis-à-vis de cette formation
-- Autres choses ?
-- Passions, loisirs, etc.
 
 ---
 
@@ -82,7 +56,6 @@ Un dépôt GitHub par apprenant :
   - Git
   - GitLab
   - Jenkins
-
 
 ---
 

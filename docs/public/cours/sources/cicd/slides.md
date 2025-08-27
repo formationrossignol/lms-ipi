@@ -9,7 +9,7 @@
 - Responsable ingénierie projet et Manager d’équipe
 - Formateur :
  _ IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
- _up Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
+ _ Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
 - Badminton, plongée
 
 https://www.linkedin.com/in/loicrossignol/

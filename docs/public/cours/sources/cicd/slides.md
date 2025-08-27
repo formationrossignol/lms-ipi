@@ -62,22 +62,24 @@ Un dépôt GitHub par apprenant :
 
 ## Sommaire
 
+# Sommaire
+
 - Introduction
 - Les concepts clés
- + Le DevOps
- + Le DevSecOps
- + Quelques pratiques DevOps
-  + Intégration continue, livraison continue, déploiement continu
-  + Les tests
-  + Le Post-Mortem
-  + L'ingénierie du chaos
-  + Les stratégies de déploiements
-  + L’Infrastructure as Code
-  + Le GitOps
+  - Le DevOps
+  - Le DevSecOps
+  - Quelques pratiques DevOps
+    - Intégration continue, livraison continue, déploiement continu
+    - Les tests
+    - Le Post-Mortem
+    - L'ingénierie du chaos
+    - Les stratégies de déploiement
+    - L’Infrastructure as Code
+    - Le GitOps
 - La mise en pratique des outils
-  + Git
-  + Gitlab
-  + Jenkins
+  - Git
+  - GitLab
+  - Jenkins
 
 ---
 

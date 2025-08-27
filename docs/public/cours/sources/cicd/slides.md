@@ -4,13 +4,13 @@
 
 ## Présentation du formateur
 
-- Loïc Rossignol
-- + de 12 ans d’expérience en IT
-- Responsable ingénierie projet et Manager d’équipe
-- Formateur :
- _ IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
- _ Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
-- Badminton, plongée
+* Loïc Rossignol
+* + de 12 ans d’expérience en IT
+* Responsable ingénierie projet et Manager d’équipe
+* Formateur :
+ * IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
+ * Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
+* Badminton, plongée
 
 https://www.linkedin.com/in/loicrossignol/
 
@@ -98,12 +98,8 @@ Un dépôt GitHub par apprenant :
 
 ## Une définition du Devops
 
-> DevOps est une approche culturelle et une pratique qui vise à améliorer la collaboration, la communication et la coopération entre les équipes de développement (Dev) et les équipes d'exploitation  (Ops) au sein d'une organisation informatique.
-
-L'objectif principal de DevOps est de briser les silos traditionnels entre
-ces deux équipes, de rationaliser les processus de développement et 
-de déploiement de logiciels et de fournir des produits et des services 
-de haute qualité plus
-rapidement et plus efﬁcacement aux clients.
+> DevOps est une approche culturelle et une pratique qui vise à améliorer la collaboration, la communication et la coopération entre les équipes de développement (Dev) et les équipes d'exploitation (Ops) au sein d'une organisation informatique.
+>
+> L'objectif principal de DevOps est de briser les silos traditionnels entre ces deux équipes, de rationaliser les processus de développement et de déploiement de logiciels et de fournir des produits et des services de haute qualité plus rapidement et plus efﬁcacement aux clients.
 
 ---

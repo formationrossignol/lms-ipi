@@ -4,13 +4,15 @@
 
 ## Présentation du formateur
 
-- Loïc Rossignol
- + Plus de 12 ans d’expérience en IT
+- Loïc Rossignol  
+  - Plus de 12 ans d’expérience en IT
 - Responsable ingénierie projet et Manager d’équipe
 - Formateur :
- + IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
- + Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
-- Badminton, plongée
+  - IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum  
+  - Thales : DevOps, Lean/Agilité et Air Traffic Management
+- Centres d'intérêt :
+  - Badminton
+  - Plongée
 
 https://www.linkedin.com/in/loicrossignol/
 
@@ -47,13 +49,13 @@ https://www.linkedin.com/in/loicrossignol/
 
 Un dépôt GitHub par apprenant :
 
-- Compte Rendu d’installation de GitLab et Jenkins
-- Compte Rendu d’installation des plugins Jenkins
-- Compte Rendu de déploiement d’une application sur Gitlab
- * Incluant les commandes, les codes, etc.
-- Compte Rendu de déploiement d’une application sur Jenkins
- * Incluant les commandes, les codes, etc.
-- Format : Markdown et Mermaid (Si schémas)
+- Compte rendu d’installation de GitLab et Jenkins
+- Compte rendu d’installation des plugins Jenkins
+- Compte rendu de déploiement d’une application sur GitLab  
+  - Incluant les commandes, les codes, etc.
+- Compte rendu de déploiement d’une application sur Jenkins  
+  - Incluant les commandes, les codes, etc.
+- Format : Markdown et Mermaid (si schémas)
 
 > Attention : certains TP contiennent des erreurs, mettre en lumière les corrections (blocs de citation)
 
@@ -80,6 +82,7 @@ Un dépôt GitHub par apprenant :
   - Git
   - GitLab
   - Jenkins
+
 
 ---
 

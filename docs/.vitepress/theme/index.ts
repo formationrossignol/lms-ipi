@@ -3,7 +3,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import ExternalIframe from './components/ExternalIframe.vue'
 import Reveal from './components/Reveal.vue'
-import SlidesDeck from 'components/SlidesDeck.vue'
+import SlidesDeck from './components/SlidesDeck.vue'
 import './custom.css'
 
 export default {

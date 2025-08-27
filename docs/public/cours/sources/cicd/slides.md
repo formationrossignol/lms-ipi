@@ -5,7 +5,7 @@
 ## Présentation du formateur
 
 * Loïc Rossignol
-  + Plus de 12 ans d’expérience en IT
+ + Plus de 12 ans d’expérience en IT
 * Responsable ingénierie projet et Manager d’équipe
 * Formateur :
  + IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
@@ -57,7 +57,8 @@ Un dépôt GitHub par apprenant :
 
 > Attention : certains TP contiennent des erreurs, mettre en lumière les corrections (blocs de citation)
 
---- 
+
+---
 
 ## Sommaire
 

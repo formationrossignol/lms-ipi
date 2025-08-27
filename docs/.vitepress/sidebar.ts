@@ -1,7 +1,7 @@
 export default [
     {
         text: "DevOps Foundation",
-        collapsed: true,
+        collapsed: false,
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
             { text: "Les TP", collapsed: true, link: "/cours/cicd" }
@@ -9,7 +9,7 @@ export default [
     },
     {
         text: "La CI/CD",
-        collapsed: true,
+        collapsed: false,
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
             { text: "Les TP", collapsed: true, link: "/cours/cicd" }
@@ -17,7 +17,7 @@ export default [
     },
     {
         text: "Docker",
-        collapsed: true,
+        collapsed: false,
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
             { text: "Les TP", collapsed: true, link: "/cours/cicd" }
@@ -25,7 +25,7 @@ export default [
     },
     {
         text: "Terraform",
-        collapsed: true,
+        collapsed: false,
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
             { text: "Les TP", collapsed: true, link: "/cours/cicd" }

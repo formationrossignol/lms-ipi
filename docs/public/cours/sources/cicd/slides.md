@@ -1,17 +1,13 @@
 Intégration Continue et 
 Déploiement Continu
 
-
+---
 ## Présentation du formateur
 
 - Loïc Rossignol
 - + de 12 ans d’expérience en IT
 - Responsable ingénierie projet et Manager d’équipe
 - Formateur :
-
-- 
-- 
-
 IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
 Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
 
@@ -21,7 +17,7 @@ https://www.linkedin.com/in/loicrossignol/
 
 Loïc Rossignol - Déploiement continu – IINF170
 
-
+---
 
 Disclaimer
 
@@ -34,7 +30,7 @@ multitude d’outils
 
 Loïc Rossignol - Déploiement continu – IINF170
 
-
+---
 
 Tour de table
 
@@ -46,7 +42,7 @@ Tour de table
 
 Loïc Rossignol - Déploiement continu – IINF170
 
-
+---
 
 ## Objectifs globaux de la formation
 
@@ -59,7 +55,7 @@ déploiement continu comme Gitlab CI ou Jenkins
 
 Loïc Rossignol - Déploiement continu – IINF170
 
-
+---
 
 Evaluation du module
 

@@ -38,8 +38,6 @@ Un dépôt GitHub par apprenant :
 
 ## Sommaire
 
-# Sommaire
-
 - Introduction
 - Les concepts clés
   - Le DevOps
@@ -56,6 +54,8 @@ Un dépôt GitHub par apprenant :
   - Git
   - GitLab
   - Jenkins
+
+
 
 ---
 

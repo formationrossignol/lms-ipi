@@ -12,7 +12,11 @@ export default [
         collapsed: true,
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
-            { text: "Les TP", collapsed: true, link: "/cours/cicd" }
+            { text: "Les TP", collapsed: true, items: [
+                { text: "Installation et configuration de GitLab", collapsed: true, link: "/cours/cicd" },
+                { text: "Les TP", collapsed: true, link: "/tp/cicd/install-gitlab.md" }
+            ]   
+            }
         ]
     },
     {

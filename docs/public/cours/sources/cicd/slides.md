@@ -8,8 +8,8 @@
 - + de 12 ans d’expérience en IT
 - Responsable ingénierie projet et Manager d’équipe
 - Formateur :
- - IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
- - Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
+ _ IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
+ _up Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
 - Badminton, plongée
 
 https://www.linkedin.com/in/loicrossignol/
@@ -57,6 +57,8 @@ Un dépôt GitHub par apprenant :
 
 > Attention : certains TP contiennent des erreurs, mettre en lumière les corrections (blocs de citation)
 
+--- 
+
 ## Sommaire
 
 - Introduction
@@ -92,9 +94,12 @@ Un dépôt GitHub par apprenant :
 
 # DevOps
 
-Une définition du Devops
+---
+
+## Une définition du Devops
 
 > DevOps est une approche culturelle et une pratique qui vise à améliorer la collaboration, la communication et la coopération entre les équipes de développement (Dev) et les équipes d'exploitation  (Ops) au sein d'une organisation informatique.
+
 L'objectif principal de DevOps est de briser les silos traditionnels entre
 ces deux équipes, de rationaliser les processus de développement et 
 de déploiement de logiciels et de fournir des produits et des services 

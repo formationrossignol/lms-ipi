@@ -5,11 +5,11 @@
 ## Présentation du formateur
 
 * Loïc Rossignol
-* + de 12 ans d’expérience en IT
+  + Plus de 12 ans d’expérience en IT
 * Responsable ingénierie projet et Manager d’équipe
 * Formateur :
- * IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
- * Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
+ + IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
+ + Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
 * Badminton, plongée
 
 https://www.linkedin.com/in/loicrossignol/
@@ -18,9 +18,9 @@ https://www.linkedin.com/in/loicrossignol/
 
 ## Disclaimer
 
-- Première version de la formation
-- Il n’est pas possible de voir tous les concepts de CI/CD, déploiement, toutes les conﬁgurations des outils etc. pour la durée du module
-- Cette formation se concentre sur Gitlab et Jenkins mais il existe une multitude d’outils
+* Première version de la formation
+* Il n’est pas possible de voir tous les concepts de CI/CD, déploiement, toutes les conﬁgurations des outils etc. pour la durée du module
+* Cette formation se concentre sur Gitlab et Jenkins mais il existe une multitude d’outils
 
 ---
 
@@ -103,3 +103,4 @@ Un dépôt GitHub par apprenant :
 > L'objectif principal de DevOps est de briser les silos traditionnels entre ces deux équipes, de rationaliser les processus de développement et de déploiement de logiciels et de fournir des produits et des services de haute qualité plus rapidement et plus efﬁcacement aux clients.
 
 ---
+

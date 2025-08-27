@@ -1,3173 +1,1908 @@
-Intégration Continue et 
-Déploiement Continu
+# Les bases d'Android
 
----
-## Présentation du formateur
-
-- Loïc Rossignol
-- + de 12 ans d’expérience en IT
-- Responsable ingénierie projet et Manager d’équipe
-- Formateur :
-IPI : AWS, Docker, Ansible, Terraform, DevOps, Kanban et Scrum
-Thales : DevOps, Lean/Agilité et Air Trafﬁc Management
-
-- Badminton, plongée
-
-https://www.linkedin.com/in/loicrossignol/
-
-Loïc Rossignol - Déploiement continu – IINF170
+Par [Valentin Brosseau](https://github.com/c4software) / [Playmoweb](https://www.playmoweb.com)
 
 ---
 
-Disclaimer
+Point statistique :
 
-- Première version de la formation
-- Il n’est pas possible de voir tous les concepts de CI/CD, déploiement,
-toutes les conﬁgurations des outils etc. pour la durée du module
-- Cette formation se concentre sur Gitlab et Jenkins mais il existe une
-
-multitude d’outils
-
-Loïc Rossignol - Déploiement continu – IINF170
+- Combien d'entre vous ont un téléphone Android ?
+- Combien d'entre vous ont un iPhone ?
 
 ---
 
-Tour de table
-
-- Prénom / Nom
-- Mon expérience avec la pratique de CI/CD
-- Mes attentes vis-à-vis de cette formation
-- Autres choses ?
-- Passions, loisirs, etc.
-
-Loïc Rossignol - Déploiement continu – IINF170
+## Introduction à Android
 
 ---
 
-## Objectifs globaux de la formation
-
-- Comprendre ce qu’est le DevOps
-- Utiliser le protocole GIT
-- (Re)Découvrir les stratégies de déploiement
-- Installer, conﬁgurer et utiliser des outils d’intégration et
-
-déploiement continu comme Gitlab CI ou Jenkins
-
-Loïc Rossignol - Déploiement continu – IINF170
+- Développé par Google
+- Créé en 2008 (17 ans)
+- Actuellement en version 16
+- Android 17 (Q2 2026)
 
 ---
 
-Evaluation du module
+À la base un OS pour appareil photo.
 
-Un dépôt GitHub par apprenant :
+---
 
-- Compte Rendu d’installation de GitLab et Jenkins
-- Compte Rendu d’installation des plugins Jenkins
-- Compte Rendu de déploiement d’une application sur Gitlab
+## Pourquoi Android ?
 
-- 
+- Multi marques (Google, Samsung, Xiaomi, Microsoft, …)
+- Part de marché
+- Ouvert
+- Personnalisable
+- Le prix
 
-Incluant les commandes, les codes, etc.
+---
 
-- Compte Rendu de déploiement d’une application sur Jenkins
+## Le problème d'Android ?
 
-- 
+- La fragmentation
 
-Incluant les commandes, les codes, etc.
+---
 
-Format : Markdown et Mermaid (Si schémas)
+- Un Android ? Non… des Android!
 
-Attention : certains TP contiennent des erreurs, mettre en lumière les 
-corrections (blocs de citation)
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+- [Répartition des versions](https://gs.statcounter.com/android-version-market-share/mobile-tablet/worldwide)
+- [Répartition des caractéristiques](https://developer.android.com/about/dashboards)
+- [API Level VS utilisation](https://apilevels.com/)
 
+---
 
+## L'architecture
 
-Sommaire
+![Architecture](./img/android_architecture.jpg)
 
-- 
-- 
+---
 
-# Introduction
-# Les concepts clés
+Linux ?
 
-Le DevOps
-# Le DevSecOps
+<center>
+    <iframe src="https://giphy.com/embed/3og0ICG4WxdKSRzE3K" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
 
-- 
-- 
-- Quelques pratiques DevOps
+---
 
-■
-■
-■
-■
-■
-■
-■
+## Android is not Linux
 
-Intégration continue, livraison continue, déploiement continu
-# Les tests
-Le Post-Mortem
-# L'ingénierie du chaos
-Les stratégies de déploiements
-L’Infrastructure as Code
-# Le GitOps
-# La mise en pratique des outils
+Construis autour du noyau Linux mais … c'est tout
 
-- 
+- Noyau Linux : Drivers, Batterie, Ram.
+- Runtime Android (ART, Dalvik) : Fais tourner les applications Android.
+- App Framework : Android Framework (Android API).
 
-- Git
-- Gitlab
-- 
+---
 
-# Jenkins
+## La sécurité
 
-Loïc Rossignol - Déploiement continu – IINF170
+---
 
+L'isolation avant tout
 
+---
 
-# Les concepts clés
+- Chaque application a son propre utilisateur Linux.
+- Les applications sont sandboxées.
+- Chaque application tourne dans sa propre « VM ».
+- Chaque application a son cycle de vie.
 
+---
 
-## Objectifs du chapitre
+Permissions d'accès
 
-- (Re)Découvrir qu’est-ce que le DevOps et quelques unes de ses
+---
 
-pratiques
+- Chaque application doit demander l'accès à certaines ressources.
+- L'utilisateur doit accepter ces permissions.
+- Les permissions sont limitées (et révoquables).
 
-- (Re)Découvrir les stratégies de déploiement
-- Déﬁnir le concept de GitOps
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+## Les API
 
+Deux types :
 
+- SDK Android : Évolue lors des mises à **jour de système**. (Intégré)
+- Play Service : Évolue automatiquement indépendamment de la version de l'OS. (Distribué par Google, mais…)
 
-# DevOps
+---
 
+## Les langages
 
-Une définition du Devops
+---
 
-- DevOps est une approche culturelle et une pratique qui vise à
+### Le Code
 
-améliorer la collaboration, la communication et la coopération entre 
-les équipes de développement (Dev) et les équipes d'exploitation 
-(Ops) au sein d'une organisation informatique.
+- Java (Historique)
+- Kotlin (à privilégier maintenant)
+- Flutter (Dart ? Quoi ?)
 
-- L'objectif principal de DevOps est de briser les silos traditionnels entre
-ces deux équipes, de rationaliser les processus de développement et 
-de déploiement de logiciels et de fournir des produits et des services 
-de haute qualité plus
-rapidement et plus efﬁcacement aux clients.
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+### Les Ressources
 
+- XML (Drawables, Layout, Settings, Color, String)
+- png / jpeg / SVG (presque)
 
+---
 
-Le mur de la confusion
+### Android est une plateforme ouverte, qui évolue rapidement.
 
-Barrière symbolique entre les équipes de 
-développement (Dev) et d’exploitation 
-(Ops), où les responsabilités et objectifs 
-divergent.
+Trop pour certains… Mais le reflet de la réalité (foldable, 5G, Bluetooth LE, Bluetooth Mesh, NFC,…)
 
-Conséquences
+---
 
-- Déploiements risqués et imprévisibles
-- 
-- 
+### Bon… Et comment on fait une application ?
 
-Allongement des délais de mise en production
-Augmentation des incidents en prod
-Méﬁance entre Dev & Ops
+<center>
+<iframe src="https://giphy.com/embed/Ot4U0KHw2fdvxJZ4jh" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
 
-Origine du problème
+---
 
-Solution (DevOps)
+## 1. L'interface
 
-- Développement (Dev) : livrer vite de nouvelles
+---
 
-- 
+## Nous sommes en transition
 
-- 
+### Dommage pour vous ? Pas certains…
 
-fonctionnalités
-Exploitation (Ops) : garantir stabilité, sécurité 
-et disponibilité
-Communication limitée : transfert de 
-responsabilités unilatéral
+#### Cette année, nous utiliserons Compose + Kotlin
 
-- 
-Collaboration continue : pas de silos
-- 
-Automatisation des tests, CI/CD
-- 
-Surveillance et feedback en continu
-- Objectifs communs centrés sur la valeur
+---
 
-utilisateur
+- [Compose (Code)](https://developer.android.com/compose)
+- [View (XML)](https://developer.android.com/guide/topics/ui/declaring-layout)
 
-Loïc Rossignol - Déploiement continu – IINF170
+---
 
+### Layout « View »
 
+- Fichier XML
+- Représente l'interface graphique
+- Déclaratif
 
-Les piliers du DevOps : Le framework CALMS
+---
 
-# DevOps
+![Layout](./img/building-your-android-UI-views.webp)
 
-n
-o
+---
 
-i
-t
+### Évolutions permanentes
 
-a
-s
-i
-t
+- AndroidX
+- Jetpack
+- Compose
 
-a
-m
-o
-u
-A
+---
 
-t
+### Compose ?
 
-n
-a
-e
-L
+- Passer d'une Interface déclarative (XML).
+- À une Interface « Composable » écrite en **code** (Kotlin)
 
-t
+---
 
-n
-e
-m
-e
-r
-u
-s
-a
-e
-M
-
-g
-n
-i
-r
-a
-h
-S
-
-Culture
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
- 
-
-Culture
-
-- Collaboration et communication entre les équipes de
-
-développement et d'exploitation.
-
-- Partage d'une responsabilité commune pour la réussite du produit.
-
-- Adoption d'une culture d'apprentissage et d'amélioration continue.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-L’Automatisation
-
-- Automatisation des tâches répétitives et manuelles du
-
-cycle de vie du développement logiciel.
-
-- Mise en place d'une infrastructure et de processus
-
-d'automatisation robustes.
-
-- Utilisation d'outils et de technologies pour automatiser les
-
-tests, la livraison et le déploiement.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Lean
-
-- Application des principes du Lean manufacturing au
-
-développement logiciel (Lean IT)
-
-- Réduction des gaspillages et des inefﬁcacités dans le
-
-processus de développement.
-
-- Concentration sur la création de valeur pour le client.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Mesure (Measurement)
-
-- Collecte et analyse de données pour mesurer les
-
-performances du système et du processus.
-
-- Identiﬁcation des goulots d'étranglement et des points
-
-d'amélioration.
-
-- Utilisation des données pour prendre des décisions
-
-éclairées.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le Partage (Sharing)
-
-- Partage des connaissances et des meilleures pratiques
-
-entre les équipes.
-
-- Création d'une communauté d'apprentissage et
-
-d'entraide.
-
-- Adoption d'une approche transparente et ouverte.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-La boucle du DevOps
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Le DevSecOps
-
-
-## Définition
-
-- DevSecOps est un terme utilisé pour décrire l'intégration de
-
-pratiques de sécurité dans le processus de développement et de 
-déploiement d'applications dans un environnement DevOps.
-
-- Il s'agit d'une approche collaborative qui vise à intégrer la sécurité
-dès le début du cycle de vie de développement logiciel, plutôt que 
-de la considérer comme une étape séparée à la ﬁn du processus.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Le DevSecOps
-
-SEC
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les objectifs du DevSecOps
-
-- Créer des applications plus sûres et plus ﬁables en
-intégrant des pratiques de sécurité telles que :
-- 
-- 
-- 
-- Et la réponse aux incidents dans le processus de développement continu (CI/CD).
-
-L'analyse de code
-La gestion des vulnérabilités
-La surveillance de la sécurité
-
-- En intégrant la sécurité dans le processus de
-
-développement, les équipes peuvent détecter et corriger 
-les vulnérabilités plus tôt, réduire les risques de sécurité et 
-accélérer le déploiement des applications.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-SAST : Static Application Security Testing
-
-- Analyse de code statique des applications
-- Méthode de test de sécurité qui analyse le code source d'une
-
-application sans l'exécuter
-
-- Recherche de patterns de développement connus pour être à
-
-l'origine de vulnérabilités
-
-- Ils peuvent également rechercher des failles de conﬁguration
-
-et
-d'autres problèmes de sécurité
-
-- Exemples de produits : Coverity, Fortify, Checkmarx et
-
-AppScan
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-DAST : Dynamic Application Security Testing
-
-- Tests dynamiques de sécurité des applications
-- Méthode de test de sécurité qui analyse une application en
-
-cours
-
-- d'exécution.
-- Les outils DAST simulent des attaques contre l'application.
-- Ils peuvent :
-
-Envoyer des requêtes malveillantes
-Tenter de s'inﬁltrer dans l'application
-
-- 
-- 
-- Détourner son fonctionnement.
-
-- Exemples de produits : Acunetix, Nessus, Burp Suite et
-
-AppScan
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-SCA : Software Composition Analysis
-
-- Analyse de composition logicielle
-
-- Consiste à examiner les logiciels pour identiﬁer les
-
-composants tiers qu'ils utilisent :
-- Bibliothèques open source
-- 
-- Modules
-
-Frameworks
-
-- Exemples de produits : Snyk, Black Duck et OWASP
-
-Dependency-Check 
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Pyramide des outils de test de sécurité applicative
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Quelques pratiques DevOps
-
-
-Savez-vous différencier intégration 
-continue, livraison continue et 
-déploiement continu ?
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-L’intégration continue
-
-- 
-
-- 
-
-L'intégration continue (CI) est une pratique de développement logiciel dans laquelle les 
-développeurs intègrent régulièrement leur code dans un référentiel central
-
-L'objectif principal de l'intégration continue est de détecter et de corriger les problèmes 
-d'intégration le plus tôt possible dans le processus de développement
-
-- Des builds et des tests automatisés sont exécutés dans le référentiel central
-
-- 
-
-- 
-
-Les outils d'intégration continue tels que Jenkins, Travis CI, CircleCI, GitLab CI/CD, etc., 
-permettent d'automatiser les tâches de build, de test et de déploiement
-
-Les pipelines d'intégration continue peuvent être déclenchés par des événements tels que 
-l'envoi de code, la création d'une demande d'extraction ou la planiﬁcation d'une tâche de build 
-périodique
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-La livraison continue
-
-- La livraison continue (Continuous Delivery, CD) est une pratique de
-développement logiciel qui vise à automatiser le processus de
-livraison de logiciels, de manière à ce que les modiﬁcations de code
-puissent être livrées rapidement, facilement et de manière ﬁable à
-tout moment.
-
-- La livraison continue se concentre sur la création d'un pipeline de
-livraison automatisé qui permet aux modiﬁcations de code d'être
-testées, validées et déployées en production en un seul clic ou en 
-une seule commande.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le déploiement continu
-
-- 
-
-- 
-
-- 
-
-Le déploiement continu (CD) est une pratique de développement logiciel qui consiste 
-à déployer automatiquement les modiﬁcations de code validées en production, de 
-manière continue et ﬁable.
-Le déploiement continu est une extension naturelle de l'intégration continue (CI), qui 
-se concentre sur la validation automatisée des modiﬁcations de code.
-Le processus de déploiement continu implique généralement les étapes suivantes :
-
-- 
-
-- 
-
-- 
-
-- 
-
-Les modiﬁcations de code sont validées à l'aide de tests automatisés dans un environnement 
-d'intégration continue.
-Si les tests sont réussis, les modiﬁcations de code sont automatiquement déployées dans un 
-environnement de pré-production pour des tests supplémentaires.
-Si les tests en pré-production sont réussis, les modiﬁcations de code sont automatiquement 
-déployées en production.
-Si des problèmes sont détectés à n'importe quelle étape du processus, le déploiement est 
-arrêté et les développeurs sont alertés pour résoudre les problèmes.
-
-- Cela nécessite une culture de développement solide axée sur l'automatisation, la
-
-surveillance et la collaboration
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Synthèse
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Les tests
-
-
-Le «Shift left»
-
- Le « Shift Left » est une approche de développement logiciel qui consiste à déplacer 
-les activités de test et de validation vers la gauche du cycle de vie de développement 
-logiciel, c'est-à-dire plus tôt dans le processus de développement.
-
-- Détecter et de corriger les erreurs et les défauts le plus tôt possible
-- Réduction des coûts et des délais de développement
-- Amélioration de la qualité du logiciel
-- Réduction des risques de sécurité (correction des vulnérabilités de sécurité au
-
-plus tôt)
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-LEFT
-
-RIGHT
-
-«Shift Left» VS «Shift Right»
-
- Le « Shift Left » est une approche de 
-développement logiciel qui consiste à déplacer 
-les activités de test et de validation vers la 
-gauche du cycle de vie de développement 
-logiciel, c'est-à-dire plus tôt dans le processus 
-de développement.
-
-- Détecter et de corriger les erreurs et les
-
-défauts le plus tôt possible
-
-- Réduction des coûts et des délais de
-
-développement
-
-- Amélioration de la qualité du logiciel
-- Réduction des risques de sécurité
-
-(correction
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les tests automatiques
-
-Types de tests automatisés
-
-## Bonnes pratiques
-
-- 
-
-- 
-
-- 
-
-- 
-
-Unitaires : testent des fonctions/méthodes isolées
-
-- 
-
-Couvrir 80% du code critique par des tests
-
-Intégration : testent la communication entre modules
-
-Fonctionnels / E2E : testent le comportement global 
-de l’application
-
-Tests de performance : mesurent la rapidité et la 
-charge
-
-- Maintenir des tests rapides et fiables
-
-- 
-
-Intégrer des tests dans tous les environnements (dev, 
-staging, prod)
-
-Intégration dans DevOps
-
-- 
-
-- 
-
-- 
-
-Exécution automatique à chaque commit ou PR
-
-Inclusion dans les pipelines CI/CD (ex : Jenkins, 
-GitLab CI)
-
-Déclenche alertes ou rollback en cas d’échec
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Le “Post-Mortem”
-
-
-## Définition
-
-Le post mortem est une pratique de rétrospective qui 
-consiste à analyser les incidents de production et les 
-problèmes rencontrés dans le processus de développement 
-et de déploiement de logiciels, dans le but d'identiﬁer les 
-causes profondes et de trouver des moyens d'améliorer les 
-processus et les pratiques.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les étapes d’un “Post-Mortem”
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# L'ingénierie du chaos
-
-
-## Définition
-
-- Également connue sous le nom de "Chaos Engineering", il s’agit d’une
-discipline de l'informatique qui consiste à tester intentionnellement la 
-résilience et la ﬁabilité d'un système en provoquant des défaillances, des 
-perturbations ou des conditions imprévues dans un environnement 
-contrôlé.
-
-- L'objectif principal de l'ingénierie du chaos est d'identiﬁer et de corriger les
-
-vulnérabilités et les faiblesses d'un système avant qu'elles ne deviennent des 
-problèmes majeurs en production, améliorant ainsi la disponibilité et la 
-robustesse globales du système.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Principes clés
-
-- Déﬁnir une hypothèse : “Que se passe-t-il si ce service
-
-tombe ?”  
-
-- Introduire des perturbations contrôlées : coupure réseau,
-
-surcharge CPU, panne d’un nœud…  
-
-- Observer le comportement réel : monitoring, logs, alertes.
-- Améliorer : renforcer l’architecture et les processus
-
-d’incident.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Bénéfices
-
-- Identiﬁer les points faibles avant qu’ils ne causent une
-
-panne réelle.  
-
-- Augmenter la conﬁance dans le système en production.
-- Former les équipes à la gestion de crise.
-- Favoriser une culture d’amélioration continue et de
-
-résilience.  
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Les stratégies de déploiement
-
-
-Le Blue-Green
-
-- 
-
-- 
-
-Stratégie de déploiement utilisant deux environnements identiques (Bleu et Vert).
-
-Pendant que l'un sert le traﬁc production (Bleu), l'autre reçoit la nouvelle version (Vert). 
-
-- Une fois validée, on bascule instantanément tout le traﬁc vers le nouvel environnement, permettant
-
-un rollback immédiat si nécessaire.
-
-## Avantages
-
-## Inconvénients
-
-Bascule instantanée
-
-Coût : nécessite doubler l'infrastructure
-
-Rollback immédiat
-
-Complexité : gestion de deux environnements
-
-Tests en conditions réelles : validation sur 
-
-Base de données : plus complexe à gérer avec des 
-
-l'infrastructure de production
-
-changements de schéma
-
-Réduction des risques : isolation complète entre les 
-
-versions
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le Canary
-- 
-
-Le déploiement Canary consiste à déployer progressivement une nouvelle version en 
-
-l'exposant d'abord à un petit pourcentage d'utilisateurs.
-
-## Avantages
-
-## Inconvénients
-
-Risque limité : impact réduit en cas de bug
-
-Complexité technique (Routage sophistiqué, Monitoring 
-
-avancé, Gestion des sessions utilisateurs, etc.)
-
-Détection rapide : problèmes identiﬁés sur un petit échantillon
-
-Expérience utilisateur inconsistante (Support client compliqué, 
-
-Versions différentes, Bugs partiels, etc.)
-
-Feedback utilisateur : retours sur une population limitée
-
-Gestion des données (Migration de schéma, Cohérence des 
-
-données, Synchronisation, etc.)
-
-Coût réduit : pas besoin de doubler l'infrastructure
-
-Complexité de rollback
-
-Validation progressive : conﬁance qui augmente 
-graduellement
-
-Tests incomplets (tests de charge, etc.)
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le Rolling
-
-- Mise à jour des serveurs un par un (ou par petits groupes) en séquence.
-
-- On remplace progressivement chaque instance de l'ancienne version par la nouvelle, en maintenant
-
-le service disponible pendant tout le processus.
-
-## Avantages
-
-## Inconvénients
-
-Économique (utilise infrastructure existante)
-
-Versions mixtes temporaires
-
-Simple à comprendre et implémenter
-
-Rollback lent et complexe
-
-Pas de duplication de ressources
-
-Problèmes de compatibilité possibles
-
-Déploiement automatisable
-
-Impact progressif mais inévitable
-
-Adapté aux petites équipes
-
-Difﬁcile de tester toutes les combinaisons
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Le GitOps
-
-
-## Définition
-
-- Méthodologie de gestion d’infrastructure et d’applications qui
-
-utilise Git (source de vérité) pour stocker et gérer la 
-conﬁguration de l’infrastructure et des applications
-- Déﬁnition de l’état souhaité de l’infrastructure et des
-
-applications
-
-- Suivre les modiﬁcations apportées
-- Déployer les modiﬁcations de manière automatisée et ﬁable
-- Quelques outils du GitOps : ArgoCD, FluxCD et Kustomize
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Représentation schématique
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# La mise en pratique des outils
-
-
-## Objectifs du chapitre
-
-- Utiliser le protocole Git aﬁn d'interagir avec un dépôt Git
-- Découvrir les fonctionnalités et l'écosystème de l’outil Gitlab CI
-- Déployer une application avec Gitlab CI
-- Découvrir les fonctionnalités et l'écosystème de l’outil Jenkins
-- Déployer une application avec Jenkins
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Synthèse des produits sur le marché
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Git
-
-
-Git : Un système de contrôle de version
-
-- Conçu pour gérer efﬁcacement le développement de
-
-projets logiciels
-
-- Git permet à plusieurs personnes de travailler
-
-simultanément sur un projet :
-- En suivant les modiﬁcations apportées aux ﬁchiers
-- En fusionnant les changements
-- Et en conservant l'historique des versions.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Glossaire
-
-- Repository (Repo) : Dépôt de code source versionné. Peut être public ou
-
-privé.
-
-- Commit : Enregistrement d’un ensemble de modiﬁcations dans Git.
-- Branch : Branche parallèle de développement (ex: main, dev, feature/xyz).
-- Merge : Fusion d’une branche dans une autre.
-- Merge Request (MR) : Demande de fusion d’une branche dans une autre
-
-via GitLab, avec revue de code.
-
-- Fork : Copie d’un repo pour modiﬁcation personnelle avant de proposer
-
-une MR.
-
-- Rebase : Ré-applique les commits d’une branche par-dessus une autre
-
-(réécriture propre).
-
-- Conﬂict : Conﬂit entre deux branches lors d’un merge ou rebase. Doit
-
-être résolu manuellement.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Installation et configuration
-
-
-## LAB
-Installation et configuration de Git
-
-https://github.com/formationrossignol/tp-cicd/blob/main/installation-git.md
-
-
-UTILISATION
-
-
-LES BASES DE GIT
-
-Conﬁguration des outils (conﬁgurer les informations de l’utilisateur)
-
-git config --global user.name «[nom]»
-
-git config --global user.email «[adresse 
-email]»
-
-Création des dépôts
-
-git init [nom-du-projet]
-Créer un dépôt local
-
-Effectuer des changements
-
-git clone [url]
-Télécharge un projet existant
-
-git status
-Liste les nouveaux ﬁchiers et les ﬁchiers modiﬁés
-
-git add [fichier]
-Ajouter le ﬁchier en préparation pour le suivi de version
-
-git reset
-Enlève le ﬁchier de l’index
-
-git diff
-Montre les modiﬁcations de ﬁchiers qui ne sont pas 
-encore indexées
-
-git diff --staged
-Montre les différences de ﬁchiers entre la version 
-indexée et la dernière version
-
-git commit –m «[message de commit]»
-Enregistre des instantanés de ﬁchiers dans l’historique 
-des versions
-
-
-
-LES BASES DE GIT
-
-Grouper les changements
-
-git branch
-Liste toutes les branches locales
-
-git checkout [nom-de-branche]
-Bascule sur la branche spéciﬁée
-
-git branch –d [nom-de-branche]
-Supprime la branche spéciﬁée
-
-git branch [nom-de-branche]
-Crée une nouvelle branche
-
-git merge [nom-de-branche]
-Combine dans la branche courante l’historique de la branche
-spéciﬁée
-
-Changements au niveau des noms de ﬁchiers
-
-git rm [fichier]
-Supprime le ﬁchier du répertoire de travail
-
-git mv [nom-fichier] [nouveau-nom-fichier]
-Renomme le ﬁchier
-
-Enregistrer des fragments
-
-git stash
-Enregistre de manière temporaire tous les ﬁchiers
-
-git stash pop
-Applique une remise et la supprimer immédiatement
-
-git stash list
-Liste toute les remises
-
-git stash drop
-Supprime la remise la plus récente
-
-
-
-LES BASES DE GIT
-
-Vériﬁer l’historique des versions
-
-git log
-Montre l’historique dans la branche courante
-git diff [premiere-branche] [deuxième-branche]
-Montre les différences entre deux branches
-Refaire des commits
-
-git reset [commit]
-Annule tous les commits en conservant les modifications 
-localement
-Synchroniser les changements
-
-git fetch [nom-dépôt]
-Récupère tout l’historique
-git push [nom-branche]
-Envoie tous les commits de la branche vers le dépot
-
-git show [commit]
-Crée une nouvelle branche
-
-git reset --hard [commit]
-Supprime tout l’historique et les modifications effectuées
-
-git merge [nom-dépôt]/[branche]
-Fusionne la branche du dépôt dans la branche locale courante
-git pull
-Récupère tout l’historique du dépôt et incorpore les
-modifications
-
-
-
-## SYNTHÈSE
-
-Copie de travail
-
-index
-
-Dépôt local
-
-Dépôt distant
-
-ad
-d
-
-clone
-
-commit
-
-pul
-l
-
-push
-
-fetch
-
-
-
-Git init
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git config
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git clone
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git status
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git add
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git diff
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git commit
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Git log
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Gitlab
-
-
-## Présentation du produit
-
-GitLab est une plateforme DevSecOps qui centralise la gestion du code, 
-l’intégration continue, le déploiement, et la sécurité.
-
-Principales fonctionnalités
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-Gestion du code source (Git, branches, merge requests)
-
-CI/CD intégré pour automatiser les builds, tests et déploiements
-
-Suivi des issues & Kanban pour la gestion de projets Agile
-
-Intégration de la sécurité (SAST, DAST, container scanning)
-
-Registry pour images Docker et packages
-
-- Observabilité : monitoring et alertes intégrés
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le glossaire
-
-- Pipeline : Enchaînement de jobs automatisés (build, test, deploy) déﬁnis dans
-
-.gitlab-ci.yml.
-Job : Tâche unique dans un pipeline (ex: "run tests", "build image").
-Stage : Groupe de jobs exécutés en parallèle ou séquentiellement (build, test, deploy).
-
-- 
-- 
-- Runner : Agent d’exécution des jobs GitLab CI. Peut être shared ou custom.
-- Artifacts : Fichiers générés par un job et partagés avec d’autres jobs.
-- Cache : Mécanisme pour réutiliser des ﬁchiers entre jobs (ex: dépendances).
-- Variables CI/CD : Variables d’environnement disponibles dans les jobs (ex: secrets,
-
-tokens).
-
-Trigger : Mécanisme pour démarrer un pipeline via une API ou un événement externe.
-
-- Manual Job : Job déclenché manuellement dans l’interface GitLab.
-- 
-- Environment : Environnement de déploiement (ex: staging, production).
-- Review App : Environnement temporaire créé automatiquement à partir d’une
-
-branche ou MR.
-
-- Auto DevOps : Pipeline CI/CD préconﬁguré pour simpliﬁer le déploiement automatisé.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Architecture
-
-
-# Introduction
-
-- GitLab est une application monolithique Ruby on Rails (frontend en
-
-Vue.js, backend Ruby + Go).
-
-- Déployable en self-managed (on-premise) ou en SaaS (gitlab.com).
-- Organisation modulaire : chaque service a un rôle précis (web, API,
-
-jobs, stockage, CI/CD).
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les principaux composants
-
-- GitLab Rails : cœur applicatif (issues, merge requests, CI/CD
-
-orchestration).
-
-- Sidekiq : traitement asynchrone (jobs en arrière-plan).
-- Workhorse : proxy Go performant pour les requêtes Git/HTTP.
-- Gitaly : service d’accès optimisé aux dépôts Git.
-- Praefect (optionnel) : gestion des dépôts Git en cluster/réplication.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Base de données et stockage
-
-- PostgreSQL : base de données relationnelle principale.
-- Redis : cache et ﬁle d’attente (sessions, ﬁles Sidekiq).
-- Object Storage (S3, MinIO, GCS, Azure Blob…) : stockage des
-
-artefacts CI/CD, paquets et registres.
-
-- NFS ou volumes persistants : stockage partagé des dépôts Git si
-
-pas de Gitaly.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les Runners
-
-- Un GitLab Runner est un agent ((Docker, Shell, Kubernetes, VM) qui exécute les jobs
-
-- 
-
-déﬁnis dans vos pipelines CI/CD GitLab.
-Il récupère les tâches depuis GitLab et les exécute dans un environnement isolé.
-GitLab Coordinator : orchestre l’exécution des jobs.
-
-- Executors : méthodes d’exécution (Docker, Shell, Kubernetes, SSH).
-- Runners peuvent être :
-
-- 
-- 
-
-Shared runners (communs à plusieurs projets).
-Speciﬁc runners (dédiés à un projet/groupe).
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Observabilité et intégrations
-
-- Monitoring : intégration Prometheus/Grafana pour métriques et alertes.
-- 
-Logs centralisés : journaux applicatifs, CI/CD, audit.
-- 
-Intégrations externes : Jira, Slack, Kubernetes, Vault, cloud providers.
-- API REST & GraphQL : exposition de toutes les fonctionnalités GitLab.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Synthèse
-
-- 
-
-- 
-
-- 
-
-- 
-
-Frontend : NGINX / 
-Workhorse (proxy et cache).
-Backend : Rails + Sidekiq + 
-Gitaly.
-Données : Postgres + Redis 
-+ Object Storage.
-CI/CD : Coordinator + 
-Runners.
-
-- Observabilité : Prometheus +
-
-Grafana + Logs.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Tour d’horizon des 
-fonctionnalités PRINCIPALES
-
-
-Gestion du code
-
-GitLab centralise et sécurise la gestion du code grâce à Git et ses fonctionnalités avancées :
-
-- Dépôts (Repository) : stockage du code et historique des versions
-- Branches : développement parallèle et isolation des fonctionnalités
-- Demandes de fusion (Merge Requests) : validation collaborative du code
-- Tags : marquage de versions stables ou milestones
-- Graphique de révision : visualisation des branches et de l’historique
-- Extraits (Snippets) : partage de blocs de code réutilisables
-- Fichiers verrouillés : éviter les conﬂits sur des ﬁchiers critiques
-- Protections de branches et approbations : contrôle qualité et validation obligatoire
-- Gestion des releases : planiﬁcation et publication des versions logicielles
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-CI/CD intégré
-
-GitLab propose une chaîne complète d’automatisation pour accélérer la livraison logicielle :
-
-- Pipelines : orchestration des étapes (build, test, déploiement)
-- Jobs parallèles et séquentiels : ﬂexibilité dans l’exécution
-- Templates YAML : standardisation des workﬂows
-- Environnements : gestion du staging, pré-production et production
-- Déploiements manuels ou automatiques : progressive delivery, blue/green, canary
-- Intégration Kubernetes : déploiements natifs sur clusters
-- Logs détaillés : visibilité sur chaque étape du pipeline
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Gestion de projet
-
-GitLab combine planiﬁcation et exécution avec des outils agiles 
-intégrés :
-
-- Issues : gestion des tickets, demandes et bugs
-- Tableaux Kanban : organisation visuelle du travail
-- Epics : regroupement d’issues par thématiques ou projets
-- Roadmaps : planiﬁcation stratégique sur plusieurs mois
-- Labels et milestones : classiﬁcation et suivi des objectifs
-- Lien direct avec commits et MR : traçabilité complète entre code et
-
-tâches
-
-- Planiﬁcation des sprints : gestion de cycles agiles
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Sécurité intégrée (DevSecOps)
-
-GitLab intègre la sécurité dès le développement :
-
-- SAST (Static Application Security Testing)
-- DAST (Dynamic Application Security Testing)
-- Dependency Scanning : détection de vulnérabilités dans les
-
-bibliothèques tierces
-
-- Container Scanning : analyse des images Docker
-- Secret Detection : détection d’identiﬁants ou clés exposées dans le
-
-code
-
-- Security Dashboards : suivi centralisé des vulnérabilités
-- Politiques de sécurité CI/CD : intégration de contrôles dans les
-
-pipelines
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Registry intégré
-
-GitLab inclut une gestion complète des artefacts et images :
-
-- Container Registry : hébergement d’images Docker intégré
-- Package Registry : support de multiples formats (npm, Maven,
-
-PyPI, Go, etc.)
-
-- Artefacts CI/CD : stockage et partage des résultats de build/tests
-- Versioning des packages : distribution et réutilisation ﬁables
-- Intégration native aux pipelines : push/pull automatisés depuis
-
-CI/CD
-
-- Contrôle d’accès : gestion ﬁne des permissions pour images et
-
-packages
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Observabilité et monitoring
-
-GitLab assure la visibilité et le suivi des projets et applications :
-
-- Dashboards intégrés : suivi des métriques projet et application
-- Logs CI/CD et déploiements : auditabilité complète
-- Alertes conﬁgurables : notiﬁcations en cas d’incident
-- Intégration Prometheus & Grafana : observabilité avancée
-- Error tracking : suivi des erreurs applicatives en production
-- Audit logs : traçabilité des actions utilisateurs et administrateurs
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Auto DevOps
-
-Auto DevOps dans GitLab, c’est une fonctionnalité qui permet de mettre en place un 
-pipeline complet CI/CD sans avoir à écrire tout le .gitlab-ci.yml
-
-En résumé, GitLab détecte automatiquement
-
-1.
-2.
-3.
-
-Le langage et le framework de ton application (Java, Python, Node.js, etc.)
-Les étapes nécessaires : build, tests, sécurité, déploiement…
-Les environnements où déployer (Kubernetes, par défaut).
-
-Pour activer Auto DevOps
-
-1. Accédez à Paramètres > CI/CD > Pipelines généraux.
-2. Activez l'option Auto DevOps.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Installation et configuration
-
-
-## LAB
-Installation et configuration de Gitlab
-
-https://github.com/formationrossignol/tp-cicd/blob/main/installation-gitlab.md
-
-
-Utiliser les jobs et les 
-pipelines
-
-
-Le fichier .gitlab-ci.yml
-
-- Fichier principal de conﬁguration CI/CD pour GitLab
-- Versionné avec le projet (comme le code source)
-- Décrit les pipelines, stages et jobs
-- Détecté automatiquement par GitLab à chaque commit
-
-https://docs.gitlab.com/ci/yaml/
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Stages
-
-- Les stages sont les grandes étapes logiques d’un pipeline GitLab.
-- Chaque stage regroupe un ou plusieurs jobs exécutés en parallèle.
-- Les stages s’exécutent dans l’ordre déﬁni.
-- Tous les jobs d’un stage doivent réussir pour passer au suivant.
-- L’organisation classique suit le cycle DevOps :
-- build :  compilation / création d’artefacts
-- test : exécution des tests automatiques
-- deploy : déploiement sur l’environnement cible
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Jobs
-
-- Un job est une unité d’exécution dans GitLab CI/CD.
-- Il contient un ensemble d’instructions (scripts) qui s’exécutent dans un Runner
-
-lors d’un pipeline.
-
-Caractéristiques
-
-- Associé à un stage (build, test, deploy, etc.)
-- Peut être exécuté en parallèle avec d’autres jobs du même stage
-- Déﬁni dans le ﬁchier .gitlab-ci.yml
-- Peut utiliser des artefacts produits par d’autres jobs
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Structure d’un pipeline
-
-- Stages : ordonnancement du
-
-pipeline
-
-- Variables : valeurs globales
-accessibles par tous les jobs
-- before_script / after_script :
-
-stages:
-- build
-- test
-- deploy
-
-actions répétitives 
-avant/après jobs
-
-variables:
-```bash
-ENV: "staging"
+```kotlin
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
 ```
 
-before_script:
-- echo "Préparation"
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+## Repose sur une approche composant
 
+### Comme SwiftUI, Flutter… ou encore VueJS, React…
 
+---
 
-## Définition des jobs
+Le composant sont maintenant un principe de base de la conception d'interface utilisateur.
 
-- stage : déﬁnit l’étape du job
-- script : liste des commandes
+---
 
-à exécuter
+## Un composant c'est quoi ?
 
-- only / except / rules :
+### À votre avis ?
 
-conditions d’exécution
+---
 
-build_ job:
-```bash
-stage: build
-```
-```bash
-script:
-```
-- echo "Compilation du projet"
-test_ job:
-```bash
-stage: test
-```
-```bash
-script:
-```
-- echo "Exécution des tests"
-deploy_ job:
-```bash
-stage: deploy
-```
-```bash
-script:
-```
-- echo "Déploiement sur main"
-```bash
-only:
-```
-- main
+- Un morceau d'interface.
+- Réutilisable.
+- Interactif.
+- Indépendant.
+- Imbriquable.
 
-Loïc Rossignol - Déploiement continu – IINF170
+---
 
+![Composant](./img/components-1.png)
 
+---
 
-Artifacts et cache
+Des briques de base d'une interface.
 
-- Artifacts : ﬁchiers générés à
-conserver pour les jobs 
-suivants
+---
 
-- Cache : accélère les builds en
+## Compose
 
-réutilisant des ﬁchiers 
-(dépendances, modules, 
-etc.)
+- Librairie Kotlin à part entière.
+- Remplace le XML pour les interfaces.
+- Utilise un moteur de rendu (Skia).
 
-build_ job:
-```bash
-stage: build
-```
-```bash
-script:
-```
-- mvn package
-```bash
-artifacts:
-```
-```bash
-paths:
-```
-- target/*.jar
-```bash
-expire_in: 1 week
-```
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+## Un moteur de rendu ?
 
+---
 
+<iframe src="https://giphy.com/embed/a5viI92PAF89q" width="480" height="331" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
-Variables et secrets
+---
 
-- Déclaration de secrets
+## Utilisable sur :
 
-sécurisés via GitLab CI/CD 
-(Settings → CI/CD → 
-Variables)
+- Android (Maintenu par Google).
+- Desktop (Compose Multiplatform).
+- iOS (Compose Multiplatform).
+- Web (Compose Multiplatform, mais expérimental).
 
-- Utilisables dans les jobs
-avec $VARIABLE_NAME
+---
 
-stages:
-- deploy
+## Revenons à Android
 
-variables:
-```bash
-ENV: "staging"
-```
-```bash
-APP_NAME: "mon-app"
+- Compose est la nouvelle façon de faire des interfaces.
+- Poussé par Google.
+- En cours de développement.
+- En cours d'adoption par les entreprises.
+
+---
+
+Change la façon de faire des interfaces. Et **uniquement** ça.
+
+(Nous avons toujours besoin de Kotlin, de Java, de Gradle, de l'Android SDK, etc.)
+
+---
+
+## Le fonctionnement
+
+- Chaque composant est une fonction.
+- Mis à jour en fonction de l'état de l'écran.
+- Mise à jour automatique et temps réel.
+
+---
+
+## Un exemple
+
+---
+
+```kotlin
+var counter by remember { mutableStateOf(0) }
+Button(onClick = { counter++ }) {
+    Text("Clique => ${counter}")
+}
 ```
 
-deploy_ job:
-```bash
-stage: deploy
-```
-```bash
-script:
-```
-- echo "Déploiement de $APP_NAME sur
-$ENV"
-- echo "Clé API : $API_KEY"
-- curl -H "Authorization: Bearer $API_KEY"
-https://api.exemple.com/deploy
-```bash
-only:
-```
-- main
+Qu'observez-vous ? À votre avis, comment ça fonctionne ?
 
-Loïc Rossignol - Déploiement continu – IINF170
+---
 
+## Un autre exemple
 
+---
 
-Catalogue CI/CD et composants CI/CD
+```kotlin
+var isLogin by remember { mutableStateOf(false) }
 
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Bonnes pratiques
-
-- Versionner le ﬁchier avec le code source
-- Organiser le pipeline en stages logiques
-- Utiliser variables et secrets pour ne pas exposer d’infos sensibles
-- Documenter les jobs et scripts
-- Réutiliser des ﬁchiers externes avec include
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Variables CI/CD, artifacts, 
-caches
-
-
-Variables CI/CD
-
-- 
-
-Paires clé/valeur utilisées pour conﬁgurer et sécuriser les pipelines.
-
-Types de variables 
-
-- 
-
-- 
-
-- 
-
-Projet / Groupe : déﬁnies dans les paramètres GitLab.
-
-Pipeline : déﬁnies au lancement d’un pipeline.
-
-Job : déﬁnies directement dans .gitlab-ci.yml.
-
-Utilisations
-
-- 
-
-- 
-
-- 
-
-Stockage de secrets (tokens, clés API, mots de passe).
-
-Paramétrage d’environnements (dev, staging, prod).
-
-Personnalisation de l’exécution des jobs.
-
-Sécurité
-
-- 
-
-variables masquées et protégées pour éviter la fuite d’informations sensibles.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Intégration d’outils externes
-
-
-Intégration d’outils externes
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Jenkins
-
-
-## Présentation du produit
-
-Serveur d’intégration continue open source permettant d’automatiser la construction, les tests et le déploiement 
-d’applications.
-
-Caractéristiques principales
-
-- 
-
-- 
-
-- 
-
-- 
-
-Plus de 2000 plugins pour s’intégrer avec divers outils (Git, Docker, Kubernetes, etc.).
-
-Pipeline as Code via Jenkinsﬁle (déﬁnition des workﬂows en YAML/Groovy).
-
-Haute ﬂexibilité : déploiement sur serveur unique ou distribué avec agents.
-
-Extensible : support de nombreux langages, environnements et outils de build.
-
-Cas d’usage
-
-- 
-
-- 
-
-- 
-
-Automatisation des builds et tests unitaires.
-
-Déploiement continu (CD) sur différents environnements.
-
-Orchestration de workﬂows complexes.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Le glossaire
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-Job : Unité d’exécution dans Jenkins (build, test, 
-déploiement, etc.).
-
-Pipeline : Suite de jobs enchaînés définissant le flux 
-CI/CD.
-
-Jenkinsfile : Fichier (en Groovy) décrivant un pipeline 
-en tant que code.
-
-Stage : Étape logique d’un pipeline (ex. : Build, Test, 
-Deploy).
-
-Step : Action élémentaire exécutée dans un stage (ex. 
-: lancer un script).
-
-Node : Machine (agent) capable d’exécuter des jobs.
-
-Agent : Environnement d’exécution d’un job (machine 
-physique, VM, conteneur).
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-Master/Controller : Instance centrale Jenkins qui orchestre les jobs et 
-les agents.
-
-Executor : Ressource de calcul attribuée à un job sur un agent.
-
-Plugin : Extension permettant d’ajouter des fonctionnalités à Jenkins.
-
-Workspace : Répertoire temporaire utilisé par un job pour stocker ses 
-fichiers.
-
-Build : Exécution d’un job ou pipeline.
-
-Freestyle project : Type de job simple, défini via l’interface graphique.
-
-Declarative Pipeline : Syntaxe pipeline simplifiée et structurée 
-(recommandée).
-
-Scripted Pipeline : Syntaxe pipeline avancée, plus flexible mais 
-complexe.
-
-Blue Ocean : Interface utilisateur moderne pour Jenkins.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Architecture
-
-
-Contrôleur / Agent
-
-Contrôleur Jenkins
-
-- 
-- 
-
-Interface web, gestion des jobs
-Planiﬁe et assigne les builds aux agents
-
-Agent Jenkins
-
-- Machine ou container exécutant les builds
-- 
-
-Peut être dédié à un type de tâche spéciﬁque
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Les types d’agents
-
-- Agent statique : toujours disponible, machine dédiée
-- Agent dynamique : créé à la volée selon les besoins (ex : via Docker, Kubernetes)
-- Avantages des agents dynamiques
-
-- Optimisation des ressources
-- 
-
-Isolation des builds
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Exécution distribuée
-
-Les builds peuvent être répartis sur plusieurs agents
-
-- 
-- Permet parallélisation et rapidité des pipelines
-- Réduit la charge sur le Master
-- 
-
-Idéal pour les projets avec tests lourds ou multiples langages
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Synthèse
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Tour d’horizon des 
-fonctionnalités PRINCIPALES
-
-
-Gestion des projets et jobs
-
-Jenkins organise le travail autour de jobs hautement conﬁgurables :
-
-- Freestyle jobs : exécution de scripts et tâches simples
-- Pipeline jobs (Declarative & Scripted) : automatisation avancée via
-
-Jenkinsﬁle
-
-- Multi-branch pipelines : détection automatique des branches d’un
-
-dépôt Git
-
-- Parameterized builds : personnalisation des exécutions (variables,
-
-environnements)
-
-- Matrix jobs : tests parallèles sur plusieurs conﬁgurations
-- Gestion de vues : organisation des jobs par projet ou équipe
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-CI/CD et automatisation
-
-Jenkins offre une chaîne complète d’intégration et de livraison 
-continues :
-
-- Build automatisés déclenchés par commit, merge ou planiﬁcation
-- Exécution de tests unitaires, d’intégration, fonctionnels
-- Déploiements automatisés sur serveurs, conteneurs ou clouds
-- Jenkinsﬁle pour versionner les pipelines dans le code
-- Stages parallèles et séquentiels pour orchestrer les workﬂows
-- Blue Ocean UI pour une visualisation claire des pipelines
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Intégrations & SCM
-
-Jenkins s’intègre avec une multitude de systèmes :
-
-- Contrôle de version : Git, GitHub, GitLab, Bitbucket, SVN…
-- Gestion des dépendances : Maven, Gradle, npm, etc.
-- Cloud & conteneurs : Kubernetes, Docker, OpenShift, AWS, Azure,
-
-GCP
-
-- Notiﬁcation & collaboration : Slack, Teams, e-mail, Jira
-- Webhooks pour déclencher des jobs automatiquement depuis
-
-SCM
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Plugins et extensibilité
-
-La véritable force de Jenkins réside dans ses plugins :
-
-- +2000 plugins disponibles sur le Jenkins Plugin Index
-- Pipeline plugins (workﬂow, stages, steps)
-- Plugins de build tools (Maven, Gradle, Ant, npm…)
-- Plugins SCM (Git, Subversion, Mercurial…)
-- Plugins cloud & container (Docker, Kubernetes, AWS, Azure…)
-- Plugins UI (Blue Ocean, Dashboard View…)
-- Plugins de sécurité (credentials, role-based access, audit)
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Sécurité et gestion des accès
-
-Jenkins inclut des mécanismes pour protéger l’écosystème CI/CD :
-
-- Gestion des utilisateurs et rôles (Role-Based Access Control)
-- Intégration LDAP / Active Directory
-- Sécurisation des credentials via le Credentials Store
-- Secrets masking dans les pipelines
-- Audit des actions via logs et plugins spécialisés
-- Protection des jobs et agents par permissions granulaires
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Monitoring et observabilité
-
-Jenkins fournit plusieurs outils de suivi et peut s’intégrer à des solutions 
-externes :
-
-- Console output pour chaque build/job
-- Historique des builds avec indicateurs de succès/échec
-- Tableaux de bord personnalisés via plugins
-- Alertes par e-mail, Slack, Teams, etc.
-- Export des métriques vers Prometheus/Grafana
-- Logs système et audit pour supervision complète
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Installation et configuration
-
-
-## LAB
-Installation et configuration de Jenkins
-
-https://github.com/formationrossignol/tp-cicd/blob/main/installation-jenkins.md
-
-
-Les bases de l’administration 
-# Jenkins
-
-
-Gérer les utilisateurs
-
-Modes de gestion
-
-- Base interne : création et gestion des comptes directement dans Jenkins.
-- Annuaire externe : intégration avec LDAP, Active Directory ou SSO.
-
-Sécurité & permissions
-
-- Matrice de permissions : gestion ﬁne des droits par rôle et par projet.
-- 
-- 
-
-Stratégies globales ou spéciﬁques aux dossiers/pipelines.
-Attribution de droits : admin, lecture, exécution, conﬁguration.
-
-## Bonnes pratiques
-
-- Utiliser un annuaire externe pour les équipes importantes.
-- 
-- 
-
-Appliquer le principe du moindre privilège.
-Auditer régulièrement les comptes et accès.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-La gestion des plugins
-
-Installation & mise à jour
-
-Via le Plugin Manager dans l’interface Jenkins.
-Recherche, installation, désactivation et suppression des plugins.
-
-- 
-- 
-- Mise à jour régulière pour bénéﬁcier des correctifs et nouvelles fonctionnalités.
-
-Rôle des plugins
-
-- 
-- 
-- 
-
-Intégration avec des outils externes : Git, Docker, Kubernetes, Slack, etc.
-Ajout de fonctionnalités : authentiﬁcation, notiﬁcations, pipelines avancés.
-Personnalisation de Jenkins selon les besoins de l’équipe.
-
-## Bonnes pratiques
-
-- N’installer que les plugins nécessaires pour limiter la surface d’attaque.
-- 
-- 
-- 
-
-Vériﬁer la compatibilité avec la version de Jenkins.
-Effectuer des sauvegardes avant toute mise à jour importante.
-Surveiller les plugins dépréciés ou non maintenus.
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Utiliser les jobs et les 
-pipelines
-
-
-Le Jenkinsfile
-
-Objectif
-
-## Avantages
-
-- Déﬁnir et automatiser les pipelines CI/CD sous
-
-forme de code
-
-Qu’est-ce qu’un Jenkinsﬁle ?
-
-- 
-
-Fichier texte (souvent nommé Jenkinsﬁle)
-
-- Décrit le pipeline Jenkins en Pipeline as Code
-
-- 
-
-Versionné dans le dépôt Git avec le code 
-source
-
-- 
-
-- 
-
-- 
-
-- 
-
-Traçabilité : historique des changements dans 
-# Git
-
-Collaboration : même workﬂow que le code 
-applicatif
-
-Réutilisable : partage et standardisation des 
-pipelines
-
-Automatisation complète du build → test → 
-déploiement
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Syntaxe d’une pipeline Jenkins
-
-- 
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-- 
-
-pipeline { } : bloc principal
-agent : déﬁnit l’environnement 
-d’exécution
-environment { } : Déclare des variables 
-d’environnement accessibles dans tout 
-le pipeline
-options { } : Déﬁnit les paramètres et 
-comportements globaux du pipeline
-stages { } : contient les différentes 
-étapes
-steps { } : actions à exécuter (shell, 
-scripts, plugins…)
-post { } : actions après l’exécution
-
-pipeline {
-```bash
-agent any
-```
-```bash
-environment {
-```
-```bash
-VAR = "value"
-```
-    }
-```bash
-options {
-```
-```bash
-timeout(time: 30, unit: 'MINUTES')
-```
-    }
-```bash
-stages {
-```
-```bash
-stage('Build') {
-```
-```bash
-steps {
-```
-```bash
-echo "Compilation..."
-```
-            }
-        }
-```bash
-stage('Test') {
-```
-```bash
-steps {
-```
-```bash
-echo "Tests unitaires..."
-```
-            }
-        }
-```bash
-stage('Deploy') {
-```
-```bash
-steps {
-```
-```bash
-echo "Déploiement..."
-```
-            }
-        }
-    }
-```bash
-post {
-```
-```bash
-always { echo "Pipeline terminé" }
-```
-```bash
-success { echo "Succès !" }
-```
-```bash
-failure { echo "Échec !" }
-```
+if (isLogin) {
+    Text("Bienvenue")
+} else {
+    Button(onClick = { isLogin = true }) {
+        Text("Se connecter")
     }
 }
-
-https://www.jenkins.io/doc/book/pipeline/syntax/
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-Conditions avec when
-
-- 
-
-Exécute uniquement selon des critères (branche, 
-tag, etc.)
-- 
-Évite des déploiements inutiles
-- Quelques conditions courantes :
-
-- 
-- 
-- 
-- 
-- 
-
-branch (main, develop, feature/*, etc.)
-tag (versions)
-environment (variable d’env Jenkins)
-expression (script Groovy custom)
-allOf / anyOf / not pour combiner les 
-conditions
-
-stage('Deploy') {
-```bash
-when {
 ```
-```bash
-branch 'main'
-```
+
+Qu'observez-vous ? À votre avis, comment ça fonctionne ?
+
+---
+
+- `remember` : Permet de conserver l'état d'une variable entre les recompositions.
+- `mutableStateOf` : Permet de créer une variable observable.
+
+---
+
+## Recomposition ?
+
+- Lorsqu'une variable observable change, Compose « recomposera » l'interface.
+- Compose va détecter les changements et mettre à jour l'interface en conséquence.
+- Pas besoin de gérer manuellement les mises à jour de l'interface.
+
+---
+
+## Quelques composants de base
+
+---
+
+## La structure
+
+- `Column` : Alignement vertical.
+- `Row` : Alignement horizontal.
+- `Box` : Alignement libre.
+
+---
+
+## Les interactions
+
+- `Button` : Un bouton.
+- `TextField` : Un champ de texte.
+- `Checkbox` : Une case à cocher.
+- `Switch` : Un interrupteur.
+- `Text` : Un texte.
+- …
+
+---
+
+Beaucoup de composants sont déjà disponibles.
+
+[https://developer.android.com/jetpack/compose/components](https://developer.android.com/jetpack/compose/components)
+
+---
+
+Repose sur le material design (nous y reviendrons)
+
+[https://m3.material.io/](https://m3.material.io/)
+
+---
+
+## Les animations
+
+```kotlin
+var counter by remember { mutableStateOf(0) }
+
+Column {
+    Button(onClick = { counter++ }) {
+        Text("Action")
     }
-```bash
-steps {
-```
-```bash
-echo "Déploiement en
-```
-production"
+
+    AnimatedVisibility(visible = counter > 0) {
+        Text("Visible")
+    }
+
+    AnimatedContent(targetState = count) { targetState ->
+        Text(text = "Count: $targetState")
     }
 }
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#when
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-Exécution parallèle
-
-- Réduit le temps global de
-
-- 
-
-pipeline
-Isole différents types de 
-tests
-
-stage('Tests') {
-```bash
-parallel {
 ```
-```bash
-stage('Unit Tests') {
+
+---
+
+- [Présentation](https://developer.android.com/jetpack/compose)
+- [Documentation](https://developer.android.com/jetpack/compose/documentation)
+- [Quelques cours et tutoriaux](https://developer.android.com/courses/jetpack-compose/course)
+
+---
+
+Le renouveau du développement Android
+
+[Exemple les animations](https://developer.android.com/jetpack/compose/animation)
+
+---
+
+- Plus simple
+- Permets de faire des animations simplement
+- Écriture plus moderne
+- Repose sur des Composants (comme React, Vue, Flutter…)
+- Pensez réutilisation
+- Est multi-plateforme (Desktop, Web…)
+
+---
+
+## Multi-plateforme ?
+
+Arrêtons-nous un instant…
+
+---
+
+- Google développe Compose pour Android.
+- JetBrains développe Compose pour iOS, Desktop (Linux, MacOS, Windows), Web.
+
+---
+
+Jetbrains a développé Kotlin, Google l'a adopté. Les deux travaillent ensemble. Activement. 
+
+Le tout est Open Source.
+
+---
+
+Trois termes à retenir :
+
+- **Compose** : La librairie de Google pour Android => Interface déclarative.
+- **KMM** : Kotlin Multiplatform (Jetbrains) => Logique métier partagée.
+- **CMP** : Compose Multiplatform (Jetbrains) => Interface partagée.
+
+---
+
+Compose multi-plateforme vous permettra donc de créer du code partagé entre vos applications Android, iOS, Desktop et Web.
+
+---
+
+Une dernière chose…
+
+---
+
+Jetpack Compose c'est jeune.
+
+Il faut donc accepter que ça évolue vite / change / sois (parfois) instable.
+
+---
+
+Pour nous accompagner dans cette transition, Google a créé :
+
+[Accompanist](https://github.com/google/accompanist)
+
+---
+
+Accompanist est voué à disparaître. Car les fonctionnalités seront intégrées à Compose.
+
+---
+
+## 2. L'outillage
+
+---
+
+## Android Studio
+
+- l'IDE
+- Java + Kotlin
+- Version spéciale de Intellij
+
+---
+
+![Interface](./img/interface.jpg)
+
+---
+
+## Toolbar
+
+![Interface](./img/toolbar.jpg)
+
+---
+
+Deux façons de travailler :
+
+- Téléphone connecté en USB.
+- Émulateur (et non simulateur).
+
+---
+
+## L'émulateur
+
+- Intégré dans Android Studio (🙌).
+- Performances suffisantes pour tester.
+- Consomme de la RAM (car c'est un VM).
+- BLE / Bluetooth partiellement disponible (**très limité**).
+
+---
+
+## Première application
+
+---
+
+- File > New > New Project
+- Configurer le projet
+- Lancer l'application sans aucune modification (dans un émulateur)
+
+---
+
+## C'est à vous
+
+---
+
+## Structure du projet
+
+---
+
+![Structure dossiers](./img/folders_projects.png)
+
+---
+
+- **src** : Vos sources Kotlin (ou Java).
+- **res** : XML, fichiers de configurations, images
+  - layout
+  - strings
+  - drawable…
+
+---
+
+### **R.java.class**
+
+- Généré automatiquement.
+- Contiens les références de tous les id.
+- Permets l'accès aux ressources depuis votre code :
+  - `stringResource(R.string.hello)`
+  - `imageResource(R.drawable.image)`
+  - …
+
+---
+
+### Pourquoi est-ce important ?
+
+- Accessibilité.
+- Une plateforme pensée internationalement.
+- Une adaptation à l'utilisateur (taille, couleur, etc.)
+
+---
+
+## Débugger
+
+- Points d'arrêts.
+  - Avec arrêt.
+  - Sans arrêt.
+  - Conditionnés
+- Logs.
+- Logs affichés dans le Logcat.
+
+---
+
+## Logcat
+
+![Interface](./img/logcat.png)
+
+---
+
+![V2](./img/new_logcat.jpg)
+
+![Interface V2](./img/logcat-formatter.png)
+
+---
+
+## Que se passe-t-il lors de la compilation ?
+
+### Avez-vous regardé ?
+
+---
+
+## Un logiciel a été lancé « Gradle »
+
+- Compilation
+- Test
+- Packaging
+- Configurable via un fichier
+
+---
+
+## Gradle
+
+- Open source.
+- Règles / scripts de compilation de votre projet.
+- Complètement intégré dans Android Studio (complétion, etc.)
+
+---
+
+## Votre première application
+
+- Activity
+- Un layout (Composant)
+- Déclaré dans le « Manifest »
+
+---
+
+## L'activity
+
+- Représente un seul écran.
+- Gère tout ce qu'il y a dans l'écran.
+- Gère la logique des interactions utilisateurs.
+- Possède son propre **cycle de vie**.
+
+---
+
+![Lifecycle](./img/lifecycle.png)
+
+---
+
+![Lifecycle 2](./img/lifecycle2.png)
+
+---
+
+- L'ensemble de vos activity hérite d'une super **ComponentActivity**.
+- « Override » surcharge des méthodes de base (au début uniquement onCreate).
+
+---
+
+## C'est à vous
+
+- Personnaliser le nom de votre application.
+- Personnaliser l'icône de votre application.
+
+---
+
+## Un détail qui compte… les composants
+
+- Découpage de l'interface.
+- Réutilisation.
+- Indépendance.
+- Paramétrable (car réutilisable).
+
+---
+
+![Composant](./img/composants-base.png)
+
+Qu'observez-vous ?
+
+---
+
+## 3. Définir un Layout
+
+---
+
+- Des colonnes.
+- Des lignes.
+- Des boîtes (box)
+
+---
+
+## Un exemple
+
+```kotlin
+Column {
+    Text("Hello")
+    Text("World")
+}
 ```
-```bash
-steps { echo "Exécution des tests
+
+---
+
+## Un exemple
+
+```kotlin
+Row {
+    Text("Hello")
+    Text("World")
+}
 ```
-unitaires" }
+
+---
+
+## Un exemple
+
+```kotlin
+Column {
+    Row {
+        Text("Hello")
+        Text("World")
+    }
+    Row {
+        Text("Hello")
+        Text("World")
+    }
+}
+```
+
+---
+
+## Un exemple
+
+```kotlin
+Box {
+    Text("Hello")
+    Text("World")
+}
+```
+
+---
+
+Nous construisons donc des grilles de composants.
+
+![Layout](./img/compose-layout.png)
+
+---
+
+## C'est à vous
+
+Modifier pour réaliser ceci :
+
+![Layout](./img/compose-layout-refactor.png)
+
+---
+
+## Il vous manque quelque chose ?
+
+… quelques composants, et un peu de style.
+
+---
+
+Pour le style c'est plutôt automatique :
+
+- Material Design.
+
+---
+
+Nous avons à notre disposition un ensemble de composants « fonctionnels » qui vont nous permettre de créer les éléments de notre interface.
+
+---
+
+- `Text` : Un composant qui permet d'afficher du texte.
+- `Button` : Un composant qui permet d'afficher un bouton.
+- `Switch` : Un composant qui permet d'afficher un toggle (un bouton qui peut être activé ou désactivé).
+- `Image` : Un composant qui permet d'afficher une image.
+- `LazyColumn` : Un composant qui permet d'afficher une liste.
+- `Scaffold` : Un composant qui permet de créer une structure de base pour notre application (barre de navigation, - etc.).
+- `TopAppBar` : Un composant qui permet de créer une barre de navigation en haut de l'application.
+- `Card` : Un composant qui permet de créer une carte.
+- `IconButton` : Un composant qui permet de créer un bouton avec une icône.
+- Etc… (Il y en a beaucoup plus, mais nous allons nous arrêter là pour l'instant).
+
+---
+
+Nous avons également des composants qui sont là pour définir la structure de notre application :
+
+- `Column` : Un composant qui permet de créer une colonne.
+- `Row` : Un composant qui permet de créer une ligne.
+- `Box` : Un composant qui permet de créer une boîte.
+- `Spacer` : Un composant qui permet de créer un espace entre deux éléments.
+
+---
+
+Exemple :
+
+```kotlin
+Column {
+    Button(onClick = { /* Action */ }) {
+        Text("Cliquez ici")
+    }
+    Spacer(modifier = Modifier.weight(1f))
+    Text("Un texte")
+}
+```
+
+---
+
+## Tout est donc composant
+
+### Et imbriquable à l'infini.
+
+---
+
+<center>
+    <iframe src="https://giphy.com/embed/xSTtrYhZOpDjYIGkYC" width="480" height="343" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+---
+
+## En vrai… c'est hard non ?
+
+Un peu d'explication… avant de continuer…
+
+---
+
+## Un bouton
+
+```kotlin
+Button(onClick = { /* Action */ }) {
+    Text("Cliquez ici")
+}
+```
+
+Ici, nous avons un bouton qui affiche un texte. Lorsque l'on clique dessus, une action est déclenchée.
+
+---
+
+## Spacer
+
+```kotlin
+Spacer(modifier = Modifier.weight(1f))
+```
+
+Un espace qui prend tout l'espace disponible. `weight` est un pourcentage. Ici nous avons un poids de 1, donc il prend tout l'espace disponible.
+
+---
+
+```kotlin
+Column {
+    Spacer(modifier = Modifier.weight(1f))
+    Text("Un texte")
+}
+```
+
+À votre avis, que va-t-il se passer ?
+
+---
+
+![Compose layout guess 1](./img/compose-layout-guess-1.png)
+
+---
+
+Comment faire pour que le texte soit centré ?
+
+Deux solutions :
+
+- `horizontalAlignment = Alignment.CenterHorizontally` sur la `Column`.
+- `textAlign = TextAlign.Center` sur le `Text`. ⚠️ Attention, cela ne fonctionne que si votre `Text` fait la largeur de l'écran.
+
+---
+
+```kotlin
+Column(
+    horizontalAlignment = Alignment.CenterHorizontally
+) {
+    Spacer(modifier = Modifier.weight(1f))
+    Text("Un texte")
+}
+```
+
+---
+
+![Compose layout guess 2](./img/compose-layout-guess-2.png)
+
+---
+
+## C'est à vous…
+
+Comment faire pour que le texte soit centré verticalement ?
+
+(PS : Il y a plusieurs solutions)
+
+---
+
+## Une solution
+
+```kotlin
+Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Spacer(modifier = Modifier.weight(1f))
+    Text("Un texte")
+    Spacer(modifier = Modifier.weight(1f))
+}
+```
+
+---
+
+## Une autre solution
+
+```kotlin
+Column(
+    verticalArrangement = Arrangement.Center, 
+    horizontalAlignment = Alignment.CenterHorizontally) 
+{
+    Text("Un texte")
+}
+```
+
+À votre avis, dans quels cas utiliser l'une ou l'autre des solutions ?
+
+---
+
+## Compose c'est beaucoup de pratique et « de référence »
+
+Pss : N'hésitez pas à consulter la documentation (mais également StackOverflow, ChatGPT, Claude, etc)
+
+---
+
+## C'est à vous
+
+Modifier pour réaliser ceci :
+
+![Layout](./img/compose-layout-refactor.png)
+
+- [https://developer.android.com/develop/ui/compose/layouts/basics]
+
+---
+
+## Exemple de Layout
+
+```kotlin
+Column(
+    modifier = Modifier.padding(innerPadding)
+) {
+    Spacer(modifier = Modifier.weight(1f))
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    )
+    {
+        Greeting(
+            name = "Android",
+        )
+    }
+
+    Spacer(modifier = Modifier.weight(1f))
+
+    Row {
+        Button(onClick = { /*TODO*/ }) {
+            Text("Button 1")
         }
-```bash
-stage('Integration Tests') {
-```
-```bash
-steps { echo "Exécution des tests
-```
-d’intégration" }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Button(onClick = { /*TODO*/ }) {
+            Text("Button 2")
         }
     }
 }
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#parallel
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-parameters { } : permet de 
-déﬁnir des paramètres que 
-l’utilisateur renseigne au 
-déclenchement du job 
-(texte, booléen, choix, mot 
-de passe…)
-
-pipeline {
-```bash
-agent any
 ```
 
-```bash
-parameters {
+---
+
+<center>
+    <iframe src="https://giphy.com/embed/kRXnZwKrPTwVq" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>
+
+---
+
+Avant de continuer, une petite pause…
+
+Nous allons en profiter pour créer un composant (vous aller voir c'est simple).
+
+---
+
+## Créer un composant
+
+```kotlin
+@Composable
+fun VotreComposant(content: String) {
+    Text(text = content)
+}
 ```
-```bash
-string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Nom de la
+
+Et c'est tout… Je vous laisse essayer en créant un composant `MyUI` qui représente votre petite interface.
+
+---
+
+## À votre avis, où ranger ce composant ?
+
+---
+
+## 3.1. L'agencement
+
+En compose, nous parlons de `Modifier`.
+
+Les modifiers ont des méthodes pour modifier les composants (taille, couleur, etc.). Ils sont chaînables et varient en fonction du composant.
+
+---
+
+## Exemple
+
+```kotlin
+Text(
+    text = "Hello World",
+    modifier = Modifier
+        .padding(16.dp)
+        .background(Color.Blue)
+        .border(1.dp, Color.Black)
+)
 ```
-branche à builder')
-```bash
-booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Exécuter les
+
+---
+
+## Exemple les dimensions
+
+```kotlin
+Modifier.fillMaxWidth() // Rempli la largeur
+Modifier.fillMaxHeight() // Rempli la hauteur
+Modifier.fillMaxSize() // Rempli la taille
 ```
-tests ?')
-```bash
-choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'prod'], description:
+
+---
+
+## Exemple le padding
+
+```kotlin
+Modifier.padding(16.dp) // Ajoute un padding de 16dp
+Modifier.padding(16.dp, 8.dp) // Ajoute un padding de 16dp en largeur et 8dp en hauteur
 ```
-'Environnement de déploiement')
-```bash
-password(name: 'SECRET_KEY', defaultValue: '', description: 'Clé API secrète')
+
+---
+
+## Taille et style du texte
+
+```kotlin
+Text(text = content, fontWeight = FontWeight.Light, fontSize = 10.sp)
 ```
+
+---
+
+Etc…
+
+---
+
+## 4. Les ressources
+
+---
+
+### L'internationalisation
+
+- `res/values/strings.xml`
+
+Accessible via `stringResourcestringResource(R.string.un_texte)`.
+
+---
+
+## C'est à vous, je vous laisse extraire le texte dans le fichier `strings.xml`
+
+👋 Pour la première fois, faisons-le ensemble
+
+---
+
+## Comment procéder ?
+
+Via Android Studio bien évidemment. Et de préférence via l'éditeur XML
+
+![Astuce Extraction](./img/astuce_extract.png)
+
+---
+
+## Les images
+
+- `res/drawable/`
+- Un nom sans espace, sans accent, sans caractère spéciaux.
+- Importable directement dans le code (`R.drawable.nom_image`).
+
+---
+
+## Ajoutons le logo de l'ESEO :
+
+```kotlin
+Image(
+    painter = painterResource(R.drawable.nom_image),
+    contentDescription = "Une image",
+    modifier = Modifier.size(128.dp)
+)
+```
+
+Placer l'image dans le dossier `res/drawable/`. Puis ajouter le au-dessus de votre `Text` qui est actuellement au centre de votre `Column`.
+
+---
+
+## Et maintenant ?
+
+---
+
+## Le fichier Manifest
+
+- Déclare le nom de l'application.
+- Déclare les activités.
+- Déclare le thème de l'application.
+- L'icône de l'application.
+- Configuration de l'application (package…).
+- Déclare les permissions.
+
+---
+
+## « Exemple » contenu d'un Manifest
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.playmoweb.demo.dmocourseseo">
+
+    <!-- Nouvelles permissions permettant de scanner en BLE Android après 11 -->    
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- Ancienne permission pour permettre l'usage du BLE  Android avant 11 inclus -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
+```
+
+---
+
+## Le dossier `res` en détail
+
+- **drawable** : Vos images (png, xml, 9.png…) (`R.drawable.…`)
+- **layout** : Vos interfaces un fichier par vue (`R.layout.…`)
+- **menu** : Contenu de vos menus (Options Menu, Sub Menu…)
+- **values** : « Constantes » de votre application (String, Int, Color, etc.)
+- **mipmap** : Icônes de votre application.
+
+---
+
+## Le dossier `res` en détail 2
+
+### AKA les ressources alternative
+
+Chaque dossier peut être redéfini en fonction de la résolution. (`-hdpi`, `-mdpi`, `-xxhdpi`…)
+
+---
+
+## Dingue, non ?
+
+- Vous connaissez un équivalent dans d'autre environnement ?
+
+---
+
+## Mais ce n’est pas tout !
+
+Chaque dossier peut être redéfini en fonction… De la langue (`values-fr/strings.xml`), de la configuration du « mobile », du thème sombre…
+
+---
+
+![Wow 2](./img/wow2.gif)
+
+---
+
+![New Resources](./img/resources.png)
+
+---
+
+![Resources Langue](./img/resources_langue.png)
+
+---
+
+Pratiquons ensemble les ressources alternatives. En testant de dynamiser nos textes sans modifier le code.
+
+---
+
+## Afficher un message à l'utilisateur
+
+Plusieurs solutions (Toast, Snackbar, Dialog)
+
+---
+
+### Les toasts
+
+![Toast](./img/toast.png)
+
+---
+
+## C'est à vous
+
+Ajouter un Toast dans votre interface
+
+```kotlin
+// Récupération du context
+val context = LocalContext.current
+
+Toast.makeText(context, "Je suis un Toast", Toast.LENGTH_LONG).show();
+```
+
+⚠️ Avec la complétion d'Android Studio.
+
+---
+
+### Context ?
+
+Le contexte est l'environnement dans lequel votre application s'exécute. Il permet d'accéder aux ressources, aux services et aux informations sur l'application.
+
+C'est un objet important dans Android, car il est utilisé pour accéder à de nombreuses fonctionnalités de l'application.
+
+---
+
+### Les Snackbars
+
+![Snackbar avec action](./img/snackbar_action.jpg)
+
+![Snackbar sans action](./img/snackbar_sans_action.jpg)
+
+---
+
+[https://developer.android.com/develop/ui/compose/components/snackbar]
+
+---
+
+### Vous souhaitez changer la durée d'affichage ?
+
+#### Plusieurs options s'offrent à vous :
+
+- `Snackbar.LENGTH_SHORT`
+- `Snackbar.LENGTH_LONG`
+- `Snackbar.LENGTH_INDEFINITE`
+
+---
+
+## 6. Les interactions
+
+---
+
+## Avant de continuer…
+
+### Les callbacks avec Kotlin
+
+---
+
+Un callback est une fonction qui est passée en paramètre d'une autre fonction.
+
+---
+
+## Exemple en Kotlin
+
+```kotlin 
+fun doSomething(callback: () -> Unit) {
+    callback()
+}
+```
+---
+
+Fonctionne dans le code, mais également dans vos composants Compose.
+
+---
+
+```kotlin
+@Composable
+fun MyButton(onClick: () -> Unit) {
+    Button(onClick = onClick) {
+        Text("Cliquez ici")
+    }
+}
+```
+
+---
+
+## Très simple avec compose
+
+- `onClick` : Clic sur un composant de type `Button`.
+- `Modifier.clickable` : Clic sur tous les composants.
+
+---
+
+## Exemple
+
+```kotlin
+Button(onClick = { /* Action */ }) {
+    Text("Cliquez ici")
+}
+```
+
+L'action est déclenchée lors du clic sur le bouton. Simple, non ?
+
+---
+
+Si vous souhaitez par exemple afficher un Toast lors du clic sur un bouton :
+
+```kotlin
+val context = LocalContext.current
+
+Button(onClick = {
+    Toast.makeText(context, "Clic sur le bouton", Toast.LENGTH_LONG).show()
+}) {
+    Text("Cliquez ici")
+}
+```
+
+---
+
+Où sur une `Image` :
+
+```kotlin
+val context = LocalContext.current
+
+Image(
+    painter = painterResource(R.drawable.nom_image),
+    contentDescription = "Une image",
+    modifier = Modifier.size(128.dp).clickable {
+        Toast.makeText(context, "Clic sur l'image", Toast.LENGTH_LONG).show()
+    }
+)
+```
+
+---
+
+## C'est à vous
+
+Ajouter une interaction sur votre bouton pour afficher un Toast.
+
+---
+
+[Voir dans le support](/tp/android/android-base-tp.html#rendre-un-element-clickable-2)
+
+---
+
+### Les Dialog
+
+Interaction « complexe » avec l'utilisateur (Choix…)
+
+![dialog.png](./img/dialog.png)
+
+---
+
+```kotlin
+val context = LocalContext.current
+
+AlertDialog(
+    onDismissRequest = { /* Action */ },
+    title = { Text("Titre") },
+    text = { Text("Contenu") },
+    confirmButton = {
+        Button(
+            onClick = {
+                Toast.makeText(context, "Clic sur le bouton", Toast.LENGTH_LONG).show()
+            }
+        ) {
+            Text("Confirmer")
+        }
+    },
+    dismissButton = {
+        Button(
+            onClick = {
+                Toast.makeText(context, "Clic sur le bouton", Toast.LENGTH_LONG).show()
+            }
+        ) {
+            Text("Annuler")
+        }
+    }
+)
+```
+
+---
+
+## C'est à vous, je vous laisse ajouter un Dialog
+
+---
+
+Ok mais… mais comment « déclencher » ce Dialog ?
+
+---
+
+## En compose, il faut penser Code et État
+
+---
+
+```kotlin
+var showDialog by remember { mutableStateOf(false) }
+
+if (showDialog) {
+    // Afficher le Dialog
+}
+
+Button(onClick = { showDialog = true }) {
+    Text("Afficher le Dialog")
+}
+```
+
+---
+
+showDialog est un état qui permet de savoir si le Dialog doit être affiché ou non. Il est **mutable**, car il peut changer.
+
+---
+
+## On s'arrête un instant…
+
+### Ça fait beaucoup là non ?
+
+---
+
+## Material ?
+
+Ensemble « de règles » / de bonne pratique pour avoir des interfaces de qualités _ou_ cohérentes.
+
+---
+
+## Créer une Dialog avec la proposition de Google
+
+[La documentation](https://material.io/develop/android/components/dialogs)
+
+---
+
+## Créer plusieurs « Pages »
+
+Principe du Router en Web.
+
+---
+
+```kotlin
+val navController = rememberNavController()
+
+NavHost(
+    modifier = Modifier.padding(innerPadding),
+    navController = navController,
+    startDestination = "screen1"
+) {
+    // Une page simple sans paramètre
+    composable("screen1") { Screen1(navController) }
+
+    // Une page avec un paramètre (ici un nom)
+    composable(
+        route = "screen2/{name}",
+        arguments = listOf(navArgument("name") { type = NavType.StringType })
+    ) { backStackEntry -> Screen2(
+            navController,
+            name = backStackEntry.arguments?.getString("name") ?: ""
+        )
+    }
+}
+```
+
+---
+
+## Ajouter la dépendance dans le `build.gradle`
+
+```groovy
+implementation("androidx.navigation:navigation-compose:2.7.7")
+```
+
+⚠️ N'oubliez pas de `Sync` votre projet.
+
+---
+
+## Exemple de page simple
+
+```kotlin
+@Composable
+fun Screen1(navController: NavController) {
+    Column {
+        Button(onClick = { navController.navigate("screen2/Valentin") }) {
+            Text("Bonjour Valentin")
+        }
+    }
+}
+```
+
+---
+
+## Exemple de page avec paramètre
+
+```kotlin
+@Composable
+fun Screen2(navController: NavController, name: String) {
+    Column {
+        Text("Bonjour $name")
+        Button(onClick = { navController.popBackStack() }) {
+            Text("Retour")
+        }
+    }
+}
+```
+
+---
+
+- Où ranger ces pages ?
+- Où mettre le Router ?
+
+---
+
+## C'est à vous
+
+- Faire évoluer votre code pour y ajouter un Router.
+- Découper votre code en :
+  - `ui/` : Les pages.
+    - `home.kt` : La page d'accueil, logo + deux boutons.
+    - `screen1.kt` : La première page.
+    - `screen2.kt` : La seconde page.
+
+Screen 2 doit afficher le nom passé en paramètre.
+
+---
+
+![Layout possible](./img/compose-suite-layout-1.png)
+
+---
+
+## Point dossier
+
+![Dossier](./img/compose-point-dossier.png)
+
+---
+
+## Testons ensemble
+
+- Rendre dynamique le nom saisi dans la le Screen 1.
+- À votre avis, comment faire ? Quelle ressource utiliser ?
+
+---
+
+Voir le support de cours
+
+---
+
+## 7. Structure
+
+---
+
+## Le scaffold
+
+---
+
+Le Scaffold est un composant qui permet de créer une structure de base pour votre application (barre de navigation, etc.).
+
+---
+
+```kotlin
+Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Ma liste") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                })
+
+        }
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            // Contenu de la page
+        }
+    }
+```
+
+---
+
+## C'est à vous
+
+Mettre en place un Scaffold dans votre `Screen1` et `Screen2`.
+
+---
+
+## 8. Les données
+
+---
+
+« Jouons » avec les données…
+
+---
+
+## Recomposition
+
+---
+
+Il faut comprendre ici que notre vue sera « **recomposée** » à chaque fois que nous allons mettre à jours nos données.
+
+---
+
+![Recomposition](./img/lifecycle-composition.png)
+
+---
+
+[En savoir plus sur la recomposition](https://developer.android.com/jetpack/compose/lifecycle?hl=fr)
+
+---
+
+## Où allons-nous ranger l'accès aux données ?
+
+---
+
+- Dans la vue ?
+- Dans le composant ?
+- Dans un ViewModel ?
+
+---
+
+## Le ViewModel
+
+- Un composant de l'architecture Jetpack.
+- Stocke et gère les données.
+- Survis aux changements de configuration.
+- Ne contiens pas de référence à la vue.
+
+---
+
+## Un exemple
+
+```kotlin
+class Screen3ViewModel : ViewModel() {
+    // Liste de String.
+    // MutableStateFlow est un Flow qui peut être modifié.
+    val listFlow = MutableStateFlow(listOf<String>())
+
+    // Ajouter un élément
+    fun addElement(element: String) {
+        listFlow.value += element
     }
 
-```bash
-stages {
+    // Supprimer un élément
+    fun removeElement(element: String) {
+        listFlow.value -= element
+    }
+
+    // Vider la liste
+    fun clearList() {
+        listFlow.value = emptyList()
+    }
+}
 ```
-```bash
-stage('Build') {
-```
-```bash
-steps {
-```
-```bash
-echo "Branche : ${params.BRANCH_NAME}"
-```
-```bash
-echo "Tests activés : ${params.RUN_TESTS}"
-```
-```bash
-echo "Déploiement sur : ${params.ENVIRONMENT}"
-```
+
+---
+
+## Exemple d'utilisation
+
+```kotlin
+@Composable
+fun Screen3(
+    navController: NavController,
+    name: String,
+    viewModel: Screen2ViewModel = viewModel()
+) {
+    // Liste dynamique de String
+    val list by viewModel.listFlow.collectAsStateWithLifecycle()
+
+    Column {
+        Text("Bonjour $name")
+        Button(onClick = { viewModel.addElement("Un élément") }) {
+            Text("Ajouter un élément")
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(list) { item ->
+                Text(item)
             }
         }
     }
 }
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#parameters
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-- 
-
-- 
-
-tools { } : installe et met à 
-disposition des outils déclarés 
-dans Jenkins (Maven, JDK, 
-Gradle, etc.)
-Les outils doivent être déﬁnis 
-dans Manage Jenkins > Global 
-Tool Conﬁguration
-
-pipeline {
-```bash
-agent any
 ```
 
-```bash
-tools {
-```
-```bash
-maven 'Maven-3.9'
-```
-```bash
-jdk 'JDK-17'
-```
-    }
+---
 
-```bash
-stages {
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ai1NUBL0gRs?si=Ldr1g2OIqPyMoPWX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+![Liste](./img/decoupage_code_screen3.png)
+
+---
+
+## Les flow
+
+- Un `Flow` est un flux de données asynchrone.
+- Il peut être modifié.
+- Il peut être observé.
+
+---
+
+```kotlin
+// Dans le ViewModel
+val listFlow = MutableStateFlow(listOf<String>())
+listFlow.value += "Un élément"
+// Ou
+val intFlow = MutableStateFlow(0)
+intFlow.value += 1
+
+// Dans le composant
+val list by viewModel.listFlow.collectAsStateWithLifecycle()
 ```
-```bash
-stage('Build avec Maven') {
-```
-```bash
-steps {
-```
-```bash
-sh 'mvn clean package'
-```
+
+- Le flow est mis à jour dans le ViewModel via le `.value = …`.
+- Dans le composant, nous allons observer le flow avec un `collectAsStateWithLifecycle`.
+
+---
+
+## C'est à vous
+
+- Créer un ViewModel pour votre `Screen3`.
+- Implémenter l'ajout et la suppression d'élément dans votre liste.
+  - Comment faire pour déclencher la suppression ?
+- Afficher la liste dans votre `Screen3`.
+
+---
+
+## 9. Découper
+
+---
+
+## Plus simplement pour commencer…
+
+### Au minimum quelques packages
+
+---
+
+Android c'est très ouvert… Il faut s'imposer une organisation.
+
+---
+
+## Quelques packages
+
+- `ui/` (pour l'interface)
+- `data/` (pour les données)
+- `remote/` (pour la partie accès au API http)
+
+---
+
+Bien évidemment c'est un exemple
+
+(Vous pouvez faire autrement…)
+
+---
+
+### Zoom sur le package ui
+
+- Organisation par « vue » / « écran ».
+- On regroupe les fonctionnalités par « vue » (exemple les `Adapters`)
+
+---
+
+### C'est à vous
+
+Vérifier l'organisation de votre projet initial.
+
+---
+
+## Pourquoi est-ce important
+
+- Partage de code
+- Reprise du code
+- Maintenance
+- …
+
+---
+
+## 9. Découper plus finement
+
+Maintenant que nous avons une organisation, nous allons découper plus finement.
+
+---
+
+Plutôt qu'une simple liste de String, nous allons créer un élément de liste que nous allons répéter.
+
+---
+
+![Liste](./img/compose-card-item-reapeat.png)
+
+---
+
+- Nous avons un `Card` qui contient un Titre, un Sous-Titre et une icône.
+- Le `Card` est répété pour chaque élément de la liste.
+- Vous ne le voyez pas, mais le `Card` est cliquable.
+
+---
+
+## À ranger dans
+
+![Liste](./img/organisation_list_item.png)
+
+---
+
+```kotlin
+@Composable
+fun ElementList(
+    title: String = "Mon titre",
+    content: String = "Mon contenu",
+    image: Int? = R.drawable.ic_launcher_foreground,
+    onClick: () -> Unit = {}
+) {
+    Card(modifier = Modifier.fillMaxWidth().padding(5.dp), onClick = onClick) {
+        Row(modifier = Modifier.padding(5.dp), verticalAlignment = Alignment.CenterVertically) {
+            image?.let {
+                Image(modifier = Modifier.height(50.dp), painter = painterResource(id = it), contentDescription = content)
+            }
+
+            Column() {
+                Text(text = title)
+                Text(text = content, fontWeight = FontWeight.Light, fontSize = 10.sp)
             }
         }
     }
 }
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#tools
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-- 
-
-triggers { } : déﬁnit des déclencheurs 
-automatiques pour exécuter le pipeline 
-(ex : cron, SCM polling, webhook 
-GitHub/GitLab…)
-
-- 
-- 
-
-- 
-
-cron : planiﬁcation périodique
-pollSCM : exécution si 
-changement dans le dépôt 
-(pull/polling)
-upstream : déclenché après la 
-réussite d’autres jobs Jenkins
-
-pipeline {
-```bash
-agent any
 ```
 
-```bash
-triggers {
+---
+
+## C'est à vous
+
+- Créer un composant `ElementList`.
+- Utiliser ce composant dans votre `Screen3`.
+
+---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y5himtvZQFQ?si=Ldr1g2OIqPyMoPWX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+## C'est à vous : Suite
+
+- Ajouter une confirmation avec un Dialog (ou une snackbar) lors de la suppression d'un élément.
+
+---
+
+## Petit défi
+
+Nous allons créer un composant `MyScaffold` qui va nous permettre de créer un Scaffold avec une barre de navigation et un contenu.
+
+---
+
+![Scaffold](./img/myscaffold.png)
+
+---
+
+Créer un composant générique qui contient un Scaffold avec une barre de navigation et un contenu.
+
+(Voir support)
+
+---
+
+## Bon et les permissions ?
+
+---
+
+![Flow Permissions](./img/flow_permissions.png)
+
+---
+
+## Point clé de la plateforme
+
+---
+
+- Les permissions sont nécessaires pour accéder à certaines fonctionnalités.
+- Elles sont demandées à l'utilisateur au moment de l'utilisation.
+- Elles peuvent être refusées.
+- Elles peuvent être retirées.
+
+---
+
+## Et pour le Bluetooth ?
+
+---
+
+- `BLUETOOTH` : Permet d'activer le Bluetooth.
+- `BLUETOOTH_ADMIN` : Permet de gérer le Bluetooth.
+- `ACCESS_COARSE_LOCATION` : Permet d'accéder à la localisation approximative.
+- `ACCESS_FINE_LOCATION` : Permet d'accéder à la localisation précise.
+- `BLUETOOTH_SCAN` : Permet de scanner en BLE.
+- `BLUETOOTH_CONNECT` : Permet de se connecter en BLE.
+
+---
+
+À votre avis, pourquoi ces permissions sont-elles nécessaires ?
+
+---
+
+- Basé sur un système d'état (granted, denied, etc.)
+- Utilise `Accompanist` pour les demandes de permissions.
+
+---
+
+La suite dans le support…
+
+---
+
+## Sauvegarder des paramètres
+
+- SharedPreferences
+- SQLite (via `Room` par exemple)
+
+---
+
+## SharedPreferences
+
+- Simple
+- Type natif **exclusivement** _(`int`, `string`, …)_
+- Persistant
+- Supprimé à chaque réinstallation
+
+---
+
+```kotlin
+// Création d'un SharedPreferences
+val sharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+
+sharedPreferences.edit().putString("key", "value").apply() // Enregistrer une valeur
+val value = sharedPreferences.getString("key", "default_value") // Récupérer une valeur
 ```
-```bash
-cron('H 2 * * 1-5')
-```
-```bash
-pollSCM('H/15 * * * *')
-```
-```bash
-upstream(upstreamProjects: 'Job-A,Job-B', threshold:
-```
-hudson.model.Result.SUCCESS)
-    }
 
-```bash
-stages {
-```
-```bash
-stage('Build') {
-```
-```bash
-steps {
-```
-```bash
-echo "Pipeline déclenché automatiquement"
-```
-            }
-        }
-    }
-}
+---
 
-Loïc Rossignol - Déploiement continu – IINF170
+Des questions ?
 
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-matrix
-
-
-Syntaxe (avancée) d’une pipeline Jenkins
-
-Pipeline en matrice
-
-- 
-
-Teste plusieurs combinaisons (OS, 
-versions, etc.)
-
-- Détecte les incompatibilités
-
-rapidement
-
-stage('Matrix Build') {
-```bash
-matrix {
-```
-```bash
-axes {
-```
-```bash
-axis {
-```
-```bash
-name 'OS'
-```
-```bash
-values 'linux', 'windows'
-```
-            }
-```bash
-axis {
-```
-```bash
-name 'JDK'
-```
-```bash
-values '8', '11'
-```
-            }
-        }
-```bash
-stages {
-```
-```bash
-stage('Build') {
-```
-```bash
-steps {
-```
-```bash
-echo "Build sur ${OS} avec JDK ${JDK}"
-```
-                }
-            }
-        }
-    }
-}
-
-https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-matrix
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## Bonnes pratiques
-
-- Versionner le Jenkinsﬁle
-
-- Garder le ﬁchier dans le dépôt Git pour traçabilité et revue de code
-
-- Utiliser la syntaxe déclarative
-
-- Plus lisible, standardisée et maintenable que la syntaxe scriptée
-
-- Modulariser avec des stages clairs
-
-- 
-
-Séparer build, tests, déploiement pour faciliter le debug
-
-- Gérer les secrets avec Jenkins Credentials
-
-- Ne jamais mettre de mots de passe ou tokens en clair
-
-- 
-
-Favoriser la réutilisabilité
-
-- Utiliser des librairies partagées (shared libraries) pour éviter la duplication
-
-- Optimiser les ressources
-
-- Utiliser l’exécution parallèle et les agents dynamiques (Docker/Kubernetes)
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## LAB
-Créer sa première pipeline
-
-https://github.com/formationrossignol/tp-cicd/blob/main/application-js-jenkins.md
-
-
-Intégration d’outils externes
-
-
-Blue Ocean
-
-Qu’est-ce que c’est ?
-
-## Avantages
-
-- 
-
-Interface utilisateur moderne et ergonomique 
-pour Jenkins.
-
-Plus intuitif que l’interface Jenkins classique.
-- 
-- Meilleure collaboration entre développeurs,
-
-- Orientée pipelines CI/CD avec une meilleure
-
-QA et Ops.
-
-expérience visuelle.
-
-- Réduction des erreurs grâce à une vue claire
-
-des pipelines.
-
-Caractéristiques
-
-- 
-
-Visualisation graphique des pipelines (stages, 
-steps, statuts).
-
-- Gestion simplifiée des branches Git et pull
-
-requests.
-Tableau de bord clair : suivi des builds, résultats 
-de tests, logs.
-Intégration fluide avec Jenkinsfile.
-
-- 
-
-- 
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Intégration de Blue Ocean dans Jenkins
-
-Installer Blue Ocean
-
-1.
-
-2.
-
-3.
-
-4.
-
-Aller dans Jenkins → Manage Jenkins → Manage Plugins
-
-Ouvrir l’onglet Available
-
-Rechercher Blue Ocean
-
-Cliquer sur Install without restart ou Download now and install after restart
-
-Créer un pipeline Blue Ocean
-
-1.
-
-2.
-
-3.
-
-4.
-
-5.
-
-Aller dans Jenkins → Open Blue Ocean
-
-Cliquer sur Create a new Pipeline
-
-Sélectionner le dépôt Git/Gitea/GitHub contenant votre projet
-
-Choisir la branche et les credentials si nécessaire
-
-Blue Ocean détecte automatiquement le Jenkinsfile pour configurer le pipeline
-
-https://www.jenkins.io/doc/book/blueocean/
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Docker
-
-Qu’est-ce que Docker ?
-
-## Avantages
-
-- 
-
-- 
-
-Plateforme de conteneurisation permettant 
-d’exécuter des applications de manière isolée
-
-Les conteneurs incluent tout ce dont l’application a 
-besoin : code, bibliothèques, dépendances
-
-Fonctionnalités principales
-
-Création et gestion d’images Docker
-
-- 
-
-- 
-
-- 
-
-- 
-
-Portabilité entre machines et environnements
-
-Rapidité et efficacité grâce aux conteneurs légers
-
-Réduction des conflits entre dépendances
-
-Large écosystème et communauté active
-
-Exécution de conteneurs légers et portables
-
-Cas d’usage typique
-
-Isolation et cohérence des environnements (dev, test, 
-prod)
-
-Intégration avec CI/CD et orchestrateurs (ex : 
-Kubernetes)
-
-- 
-
-- 
-
-Déploiement rapide d’applications
-
-Tests automatisés dans des environnements isolés
-
-- Microservices et architecture cloud-native
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-- 
-
-- 
-
-- 
-
-- 
-
-
-Intégration de Docker dans Jenkins
-
-Prérequis
-
-- 
-
-- 
-- 
-
-Installer Docker sur le serveur Jenkins ou sur les 
-agents
-Installer le plugin Docker dans Jenkins
-Configurer les credentials Docker (Docker Hub, 
-registry privée)
-
-Utilisation dans les Jobs / Pipelines
-
-- 
-
-- 
-
-Freestyle Job : exécuter des commandes docker 
-build, docker run
-Pipeline : utilisation du bloc docker pour gérer les 
-conteneurs
-
-pipeline {
-```bash
-agent any
-```
-```bash
-stages {
-```
-```bash
-stage('Build Docker') {
-```
-```bash
-steps {
-```
-```bash
-script {
-```
-```bash
-docker.build("mon-image:latest")
-```
-                }
-            }
-        }
-    }
-}
-
-https://www.jenkins.io/doc/book/installing/docker/
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Gitea
-
-Qu’est-ce que Gitea ?
-
-## Avantages
-
-- 
-
-- 
-- 
-
-Plateforme Git self-hosted, open source et 
-légère
-Alternative simple à GitHub/GitLab
-Idéal pour les petites équipes ou projets 
-internes
-
-Fonctionnalités principales
-
-- Hébergement de dépôts Git
-- Gestion des branches, tags et releases
-- 
-- 
-- 
-
-Pull requests et revue de code
-Suivi des issues et projets
-Intégration avec un outil de CI/CD (ex : 
-Jenkins)
-
-Léger et rapide, facile à installer
-- 
-Interface web simple et intuitive
-- 
-- 
-Faible consommation de ressources
-- Communauté active et open source
-
-Cas d’usage typique
-
-- Développement collaboratif interne
-- 
-
-Projets open source de petite à moyenne 
-taille
-Intégration continue avec Jenkins ou autres 
-outils CI/CD
-
-- 
-
-- Webhooks pour automatisation
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Intégration de Gitea dans Jenkins
-
-Connexion Jenkins ↔ Gitea
-
-Déclencheurs Automatiques
-
-Installer le plugin Gitea dans Jenkins
-- 
-- Configurer le serveur Gitea dans Jenkins
-- Créer un token d’accès côté Gitea pour
-
-# Jenkins
-
-- Webhook Gitea : déclenche un build à
-
-chaque push
-Planification (cron) : builds réguliers
-Pull Requests : tests automatiques sur PR
-
-- 
-- 
-
-Création d’un Job / Pipeline
-
-## Bonnes pratiques
-
-- 
-
-- 
-
-Sélectionner Git / Gitea comme source du 
-code
-Ajouter l’URL du dépôt et les credentials 
-(token)
-
-- Définir les branches à builder
-
-- 
-Limiter les permissions du token Gitea
-- Nommer clairement les jobs selon les
-
-- 
-
-branches/projets
-Vérifier les logs Jenkins et Gitea pour le 
-debug
-
-https://plugins.jenkins.io/gitea/
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-# Slack
-
-Qu’est-ce que Slack ?
-
-## Avantages
-
-- 
-
-Plateforme de messagerie collaborative 
-pour les équipes
-
-- Centralise les communications, fichiers et
-
-intégrations dans un seul endroit
-
-Fonctionnalités principales
-
-- Canaux organisés par projet, équipe ou sujet
-- Messages directs et appels audio/vidéo
-Partage de fichiers et historique de 
-- 
-discussion
-Intégrations avec plus de 2 000 outils 
-(Jenkins, GitHub, Trello…)
-
-- 
-
-- Notifications et alertes personnalisables
-
-- Réduction des emails internes
-- Communication centralisée et transparente
-- Collaboration en temps réel et suivi des
-
-projets
-Automatisation via bots et intégrations
-
-- 
-
-Cas d’usage typique
-
-- Notifications CI/CD et alertes techniques
-- Coordination des équipes de développement
-
-- 
-
-et support
-Partage instantané d’informations et 
-documents
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-Intégration de Slack dans Jenkins
-
-Pré-requis
-
-Utilisation dans les Pipelines (Exemple pipeline déclaratif)
-
-- 
-- 
-
-- 
-
-Compte Slack et accès à un workspace
-Installer le plugin Slack Notification dans 
-# Jenkins
-Créer un Webhook Slack pour Jenkins 
-(Incoming Webhook)
-
-Configuration dans Jenkins
-
-- 
-- 
-
-Ajouter les credentials Webhook dans Jenkins
-Paramétrer les canaux Slack où envoyer les 
-notifications
-Choisir les événements à notifier :
-
-- 
-- 
-- 
-
-Build réussi
-Build échoué
-Build instable
-
-https://plugins.jenkins.io/slack/
-
-pipeline {
-```bash
-agent any
-```
-```bash
-stages {
-```
-```bash
-stage('Build') { steps { echo 'Building...' } }
-```
-    }
-```bash
-post {
-```
-```bash
-success { slackSend channel: '#dev-alerts',
-```
-message: 'Build réussi !' }
-```bash
-failure { slackSend channel: '#dev-alerts',
-```
-message: 'Build échoué !' }
-    }
-}
-
-Loïc Rossignol - Déploiement continu – IINF170
-
-
-
-## LAB
-
-Intégrer les plugins Blue Ocean, Slack et Gitea
-
-https://github.com/formationrossignol/tp-cicd/blob/main/plugins-jenkins.md
-
-
-# Merci
-
-“Apprendre, c’est déposer de l’or dans la banque de son esprit.”
-
-```bash
-Shad Helmstetter
-```
+---

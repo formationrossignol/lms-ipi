@@ -13,8 +13,12 @@ export default [
         items: [
             { text: "Le cours", collapsed: true, link: "/cours/cicd" },
             { text: "Les TP", collapsed: true, items: [
-                { text: "Installation et configuration de GitLab", collapsed: true, link: "/cours/cicd" },
-                { text: "Les TP", collapsed: true, link: "/tp/cicd/install-gitlab.md" }
+                { text: "Installation et configuration de Git", collapsed: true, link: "/tp/cicd/installation-git.md" },
+                { text: "Installation et configuration de GitLab", collapsed: true, link: "/tp/cicd/installation-gitlab.md" },
+                { text: "Installation et configuration de Jenkins", collapsed: true, link: "/tp/cicd/installation-jenkins.md" },
+                { text: "Déployer une application avec Gitlab", collapsed: true, link: "/tp/cicd/application-deployment-gitlab.md" },
+                { text: "Déployer une application avec Jenkins", collapsed: true, link: "/tp/cicd/application-deployment-jenkins.md" },
+                { text: "Installer des plugins avec Jenkins", collapsed: true, link: "/tp/cicd/installation-plugins-jenkins.md" }
             ]   
             }
         ]
